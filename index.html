@@ -2,48 +2,330 @@
 <html lang="ru">
 	<head>
 		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, viewport-fit=cover"
-		/>
-		<title>Ремонт телевизоров в Новобурейском | Подсветка ТВ</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Ремонт телевизоров в Новобурейском | Замена подсветки</title>
 		<meta
 			name="description"
-			content="Ремонт телевизоров в Новобурейском. Замена подсветки, диагностика, ремонт после скачка напряжения. Сдача ТВ в мастерскую. Гарантия 6-12 мес."
+			content="Профессиональный ремонт LED и Smart TV в сервисном центре. Замена подсветки, диагностика, гарантия 6–12 мес. Новобурейский, Бурея, Талакан."
 		/>
 		<meta name="color-scheme" content="light dark" />
-		<meta name="robots" content="index, follow, max-image-preview:large" />
-		<meta property="og:type" content="website" />
-		<meta property="og:locale" content="ru_RU" />
+		<meta name="theme-color" content="oklch(0.5 0.25 225)" />
+
+		<!-- Open Graph -->
 		<meta
 			property="og:title"
-			content="Ремонт телевизоров в Новобурейском | Подсветка ТВ"
+			content="Ремонт телевизоров в Новобурейском"
 		/>
 		<meta
 			property="og:description"
-			content="Ремонт телевизоров в сервисном центре: подсветка, питание, диагностика. Гарантия 6-12 мес."
+			content="Замена LED-подсветки и диагностика. Ремонт выполняется в мастерской. Гарантия на работу и запчасти."
 		/>
-		<meta property="og:url" content="https://example.com/" />
-		<meta
-			property="og:image"
-			content="https://example.com/public/og-tv-repair.svg"
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="ru_RU" />
+		<meta property="og:site_name" content="LexTi" />
+		<link rel="canonical" href="https://your-domain.ru/" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📺</text></svg>"
 		/>
-		<meta
-			property="og:image:alt"
-			content="Ремонт телевизоров в Новобурейском в мастерской"
-		/>
-		<link rel="canonical" href="https://example.com/" />
-		<link rel="icon" href="/public/tv-service.svg" type="image/svg+xml" />
+
+		<link rel="stylesheet" href="/css/app.css" />
+
+		<style>
+			/* ========================================================================
+       @layer components — стили лендинга
+       Все переменные берутся из base.css и properties.css
+       ======================================================================== */
+			@layer components {
+				:where(html) {
+					scroll-behavior: smooth;
+				}
+				:where(.skip-link) {
+					position: absolute;
+					top: -40px;
+					left: 0;
+					background: var(--accent);
+					color: light-dark(#fff, var(--text));
+					padding: 0.5rem 1rem;
+					z-index: 100;
+					transition: top 0.2s;
+				}
+				:where(.skip-link):focus {
+					top: 0;
+				}
+
+				/* Layout & Spacing */
+				.container {
+					width: min(100% - var(--space), 1200px);
+					margin-inline: auto;
+				}
+				section {
+					padding-block: clamp(2.5rem, 5vw, 4rem);
+					border-bottom: 1px solid var(--divider);
+				}
+				section:last-of-type {
+					border-bottom: none;
+				}
+
+				/* Typography & Components */
+				h1,
+				h2,
+				h3 {
+					color: var(--text-h);
+				}
+				h1 {
+					margin-bottom: 0.5em;
+				}
+				h2 {
+					margin-bottom: 1em;
+				}
+				.lead {
+					color: var(--text-s);
+					font-size: clamp(1rem, 1.2vw, 1.15rem);
+					margin-bottom: 1.5rem;
+				}
+
+				.btn {
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+					gap: 0.5rem;
+					padding: 0.85rem 1.5rem;
+					border-radius: var(--radius);
+					font-weight: 500;
+					text-decoration: none;
+					cursor: pointer;
+					transition: all 0.2s;
+					min-block-size: 3rem;
+					white-space: nowrap;
+				}
+				.btn--primary {
+					background: var(--accent);
+					color: light-dark(#fff, var(--text-h));
+					box-shadow:
+						0 0 0 1px var(--accent),
+						var(--shadow-accent);
+				}
+				.btn--outline {
+					border: 1px solid var(--border);
+					color: var(--text);
+					background: transparent;
+					box-shadow: 0 2px 8px
+						color-mix(in oklch, var(--text) 5%, transparent);
+				}
+				.btn:hover {
+					filter: brightness(1.08);
+					transform: translateY(-1px);
+				}
+				.btn:active {
+					transform: translateY(0);
+				}
+				.btn:focus-visible {
+					outline: 3px solid var(--accent);
+					outline-offset: 3px;
+				}
+
+				.btn-group {
+					display: flex;
+					flex-wrap: wrap;
+					gap: 0.75rem;
+					margin-top: 1.5rem;
+				}
+
+				.grid {
+					display: grid;
+					gap: var(--space);
+				}
+				@media (width >= 640px) {
+					.grid--2 {
+						grid-template-columns: repeat(2, 1fr);
+					}
+				}
+				@media (width >= 900px) {
+					.grid--3 {
+						grid-template-columns: repeat(3, 1fr);
+					}
+				}
+
+				.card {
+					border: 1px solid var(--border);
+					border-radius: var(--radius);
+					padding: var(--space);
+					background: light-dark(
+						rgba(255, 255, 255, 0.6),
+						rgba(255, 255, 255, 0.03)
+					);
+					transition: border-color 0.3s;
+				}
+				.card:hover {
+					border-color: var(--accent);
+				}
+				.card h3 {
+					margin-bottom: 0.5rem;
+					font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+				}
+				.card p {
+					color: var(--text-s);
+					margin: 0;
+					line-height: 1.5;
+				}
+
+				/* FAQ Accordion */
+				details {
+					border: 1px solid var(--border);
+					border-radius: var(--radius);
+					margin-bottom: 0.5rem;
+					overflow: hidden;
+					background: var(--bg-secondary);
+				}
+				details[open] summary ~ * {
+					animation: sweep 0.3s ease;
+				}
+				summary {
+					padding: 1rem;
+					cursor: pointer;
+					font-weight: 500;
+					color: var(--text-h);
+					list-style: none;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+				}
+				summary::-webkit-details-marker {
+					display: none;
+				}
+				summary::after {
+					content: "+";
+					font-size: 1.5rem;
+					transition: transform 0.3s;
+				}
+				details[open] summary::after {
+					transform: rotate(45deg);
+				}
+				details[open] summary {
+					border-bottom: 1px solid var(--divider);
+				}
+				.faq-content {
+					padding: 1rem;
+					color: var(--text-s);
+					line-height: 1.6;
+				}
+
+				@keyframes sweep {
+					from {
+						opacity: 0;
+						transform: translateY(-5px);
+					}
+					to {
+						opacity: 1;
+						transform: translateY(0);
+					}
+				}
+
+				/* Form */
+				.form-group {
+					display: flex;
+					flex-direction: column;
+					gap: 0.5rem;
+					margin-bottom: 1rem;
+				}
+				.form-label {
+					font-size: 0.9rem;
+					color: var(--text-s);
+				}
+				input,
+				textarea {
+					width: 100%;
+					padding: 0.75rem 1rem;
+					border: 1px solid var(--border);
+					border-radius: var(--radius);
+					background: var(--bg-color);
+					color: var(--text);
+					font: inherit;
+					transition:
+						border-color 0.2s,
+						box-shadow 0.2s;
+				}
+				input:focus-visible,
+				textarea:focus-visible {
+					border-color: var(--accent);
+					outline: 2px solid
+						color-mix(in oklch, var(--accent) 30%, transparent);
+				}
+				input:invalid:not(:placeholder-shown) {
+					border-color: var(--lx-color-danger);
+				}
+
+				.checkbox-wrapper {
+					display: flex;
+					align-items: flex-start;
+					gap: 0.5rem;
+					font-size: 0.9rem;
+					color: var(--text-s);
+				}
+				input[type="checkbox"] {
+					width: auto;
+					margin-top: 0.3rem;
+					accent-color: var(--accent);
+				}
+
+				/* Sticky Mobile CTA */
+				.sticky-cta {
+					position: fixed;
+					bottom: 1rem;
+					left: 50%;
+					transform: translateX(-50%);
+					width: min(90%, 400px);
+					z-index: 50;
+					display: none;
+					box-shadow: var(--shadow-3);
+					border-radius: var(--radius);
+				}
+				@media (width < 768px) {
+					.sticky-cta {
+						display: block;
+					}
+				}
+
+				/* Utility */
+				.text-center {
+					text-align: center;
+				}
+				.mt-2 {
+					margin-top: 0.5rem;
+				}
+				.note {
+					font-size: 0.9rem;
+					color: var(--text-s);
+					background: var(--bg-secondary);
+					padding: 0.75rem;
+					border-radius: var(--radius);
+					border-left: 3px solid var(--accent);
+				}
+				.map-placeholder {
+					width: 100%;
+					height: 250px;
+					background: var(--bg-secondary);
+					border-radius: var(--radius);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					color: var(--text-s);
+					border: 1px dashed var(--divider);
+				}
+			}
+		</style>
+
+		<!-- Schema.org -->
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
 				"@type": "RepairService",
 				"name": "Ремонт телевизоров в Новобурейском",
-				"url": "https://example.com/",
-				"image": "https://example.com/public/og-tv-repair.svg",
-				"telephone": "+79622930611",
+				"image": "https://your-domain.ru/logo.webp",
+				"telephone": "+7-962-293-06-11",
 				"priceRange": "₽₽",
-				"description": "Ремонт телевизоров и диагностика в сервисном центре. Основная услуга — замена подсветки, если звук есть, а изображения нет.",
 				"address": {
 					"@type": "PostalAddress",
 					"addressLocality": "Новобурейский",
@@ -52,1139 +334,499 @@
 				},
 				"geo": {
 					"@type": "GeoCoordinates",
-					"latitude": 49.797,
-					"longitude": 129.875
+					"latitude": 49.8667,
+					"longitude": 129.0333
 				},
 				"areaServed": [
 					"Новобурейский",
 					"Бурея",
-					"Малиновка",
-					"Родионовка",
-					"Николаевка",
-					"Бурейский район",
-					"Прогресс",
 					"Талакан",
+					"Прогресс",
 					"Архара",
 					"Завитинск"
 				],
-				"openingHours": ["Mo-Sa 09:00-18:00"],
-				"sameAs": ["https://wa.me/79622930611"]
+				"openingHours": "Mo-Sa 10:00-19:00",
+				"serviceType": [
+					"Замена LED-подсветки",
+					"Диагностика телевизоров",
+					"Ремонт Smart TV"
+				],
+				"description": "Профессиональный ремонт телевизоров в сервисном центре. Замена подсветки, диагностика питания, гарантия 6-12 месяцев.",
+				"url": "https://your-domain.ru/"
 			}
 		</script>
-		<style>
-			@import url("/css/layers/properties.css");
-			@layer reset, base, a11y, components;
-			@import url("/css/layers/reset.css") layer(reset);
-			@import url("/css/layers/base.css") layer(base);
-			@import url("/css/layers/a11y.css") layer(a11y);
-
-			@layer components {
-				html {
-					background:
-						radial-gradient(
-							circle at top left,
-							color-mix(in oklch, var(--accent) 16%, transparent),
-							transparent 34%
-						),
-						radial-gradient(
-							circle at bottom right,
-							color-mix(in oklch, var(--lx-color-success) 14%, transparent),
-							transparent 36%
-						),
-						var(--bg-color);
-				}
-
-				body {
-					width: 100%;
-					max-width: none;
-					padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0));
-					background: transparent;
-				}
-
-				main {
-					padding: 0;
-				}
-
-				:where(section[id], footer[id]) {
-					scroll-margin-top: 5.5rem;
-				}
-
-				.shell {
-					width: min(100% - 1.25rem, 72rem);
-					margin-inline: auto;
-				}
-
-				.skip-link {
-					position: absolute;
-					left: 1rem;
-					top: -3rem;
-					z-index: 50;
-					padding: 0.75rem 1rem;
-					border-radius: 999px;
-					background: var(--accent);
-					color: light-dark(white, var(--text));
-					text-decoration: none;
-				}
-
-				.skip-link:focus-visible {
-					top: 1rem;
-				}
-
-				.site-header {
-					position: sticky;
-					top: 0;
-					z-index: 40;
-					border-bottom: 1px solid var(--divider);
-					background: color-mix(in oklch, var(--bg-color) 90%, canvas);
-					backdrop-filter: blur(18px);
-				}
-
-				.site-header__inner {
-					display: grid;
-					grid-template-columns: 1fr;
-					gap: 0.9rem;
-					padding-block: 0.9rem;
-				}
-
-				.brand-row,
-				.header-actions,
-				.footer-row {
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-					gap: 0.75rem;
-					flex-wrap: wrap;
-				}
-
-				.brand {
-					display: inline-flex;
-					align-items: center;
-					gap: 0.85rem;
-					color: inherit;
-					text-decoration: none;
-				}
-
-				.brand__mark {
-					display: grid;
-					place-items: center;
-					inline-size: 2.85rem;
-					block-size: 2.85rem;
-					border-radius: 0.95rem;
-					background: color-mix(in oklch, var(--accent) 88%, black);
-					color: white;
-					font-weight: 700;
-					letter-spacing: 0.04em;
-				}
-
-				.brand__text {
-					display: grid;
-					gap: 0.12rem;
-				}
-
-				.brand__text strong {
-					font-size: 0.98rem;
-					line-height: 1.1;
-					color: var(--text-h);
-				}
-
-				.brand__text small {
-					font-size: 0.82rem;
-					line-height: 1.15;
-					color: var(--text-s);
-				}
-
-				.header-phone {
-					font-weight: 700;
-					color: var(--text-h);
-					text-decoration: none;
-				}
-
-				.header-phone:hover {
-					text-decoration: underline;
-				}
-
-				.nav {
-					display: flex;
-					flex-wrap: wrap;
-					gap: 0.45rem;
-				}
-
-				.nav a {
-					padding: 0.65rem 0.9rem;
-					border: 1px solid var(--border);
-					border-radius: 999px;
-					background: color-mix(in oklch, var(--bg-secondary) 88%, canvas);
-					color: var(--text-h);
-					text-decoration: none;
-				}
-
-				.nav a:hover {
-					border-color: var(--accent);
-				}
-
-				.button {
-					display: inline-flex;
-					align-items: center;
-					justify-content: center;
-					min-block-size: 3.25rem;
-					padding: 0.9rem 1.15rem;
-					border: 1px solid transparent;
-					border-radius: 999px;
-					font-weight: 700;
-					line-height: 1;
-					text-decoration: none;
-					cursor: pointer;
-					transition:
-						filter 0.2s ease,
-						transform 0.2s ease,
-						border-color 0.2s ease;
-				}
-
-				.button:hover {
-					filter: brightness(1.05);
-					transform: translateY(-1px);
-				}
-
-				.button:focus-visible,
-				.nav a:focus-visible,
-				.header-phone:focus-visible,
-				.contact-link:focus-visible,
-				.brand:focus-visible,
-				.faq-item summary:focus-visible,
-				.field :where(input, textarea):focus-visible,
-				.checkbox:focus-visible,
-				.submit-status a:focus-visible {
-					outline: 2px solid var(--accent);
-					outline-offset: 2px;
-				}
-
-				.button--primary {
-					background: var(--accent);
-					color: light-dark(#ffffff, var(--text));
-					box-shadow: 0 1rem 2rem color-mix(in oklch, var(--accent) 20%, transparent);
-				}
-
-				.button--secondary {
-					background: color-mix(in oklch, var(--bg-secondary) 90%, canvas);
-					border-color: var(--border);
-					color: var(--text-h);
-				}
-
-				.button--full {
-					inline-size: 100%;
-				}
-
-				.hero {
-					padding: 1rem 0 1.5rem;
-				}
-
-				.hero__grid,
-				.card-grid,
-				.info-grid,
-				.form-layout,
-				.footer-row {
-					display: grid;
-					gap: 1rem;
-				}
-
-				.hero__content,
-				.hero__aside,
-				.card,
-				.contact-panel,
-				.form-panel,
-				.map-card,
-				.notice,
-				.cta-strip {
-					border: 1px solid var(--border);
-					border-radius: var(--radius);
-					padding: var(--space);
-					background: color-mix(in oklch, var(--bg-secondary) 90%, canvas);
-					box-shadow: 0 1.1rem 2.4rem color-mix(in oklch, var(--text-h) 8%, transparent);
-				}
-
-				.hero__content {
-					background:
-						linear-gradient(
-							180deg,
-							color-mix(in oklch, var(--bg-secondary) 96%, canvas),
-							color-mix(in oklch, var(--bg-secondary) 86%, var(--bg-color))
-						),
-						radial-gradient(
-							circle at top right,
-							color-mix(in oklch, var(--accent) 12%, transparent),
-							transparent 48%
-						);
-				}
-
-				.eyebrow {
-					display: inline-flex;
-					align-items: center;
-					gap: 0.35rem;
-					margin-bottom: 0.85rem;
-					padding: 0.45rem 0.8rem;
-					border-radius: 999px;
-					background: color-mix(in oklch, var(--accent) 10%, transparent);
-					color: var(--accent);
-					font-size: 0.82rem;
-					font-weight: 700;
-					letter-spacing: 0.03em;
-					text-transform: uppercase;
-				}
-
-				h1 {
-					margin: 0 0 0.9rem;
-					font-size: clamp(2rem, 7vw, 3.6rem);
-					line-height: 1.03;
-					letter-spacing: -0.04em;
-					max-width: 12ch;
-				}
-
-				h2 {
-					margin: 0 0 0.65rem;
-					font-size: clamp(1.45rem, 4vw, 2.35rem);
-					line-height: 1.08;
-					letter-spacing: -0.03em;
-				}
-
-				h3 {
-					margin: 0 0 0.7rem;
-					font-size: 1.08rem;
-					line-height: 1.25;
-				}
-
-				.hero__lead,
-				.section-head p,
-				.card p,
-				.form-note,
-				.contact-panel p,
-				.submit-status {
-					color: var(--text-s);
-				}
-
-				.hero__actions {
-					display: grid;
-					gap: 0.75rem;
-					margin: 1.2rem 0;
-				}
-
-				.hero__cities,
-				.badge-list,
-				.symptom-list,
-				.card-list,
-				.contact-list {
-					display: grid;
-					gap: 0.7rem;
-				}
-
-				.hero__cities {
-					grid-template-columns: repeat(2, minmax(0, 1fr));
-				}
-
-				.city-chip,
-				.badge {
-					display: inline-flex;
-					align-items: center;
-					justify-content: center;
-					min-block-size: 2.5rem;
-					padding: 0.55rem 0.85rem;
-					border: 1px solid var(--border);
-					border-radius: 999px;
-					background: color-mix(in oklch, var(--bg-secondary) 90%, canvas);
-					color: var(--text-h);
-					text-align: center;
-				}
-
-				.badge-list {
-					grid-template-columns: repeat(2, minmax(0, 1fr));
-				}
-
-				.symptom-list li,
-				.card-list li,
-				.contact-list li {
-					position: relative;
-					padding-left: 1.3rem;
-				}
-
-				.symptom-list li::before,
-				.card-list li::before,
-				.contact-list li::before {
-					content: "";
-					position: absolute;
-					left: 0;
-					top: 0.55rem;
-					inline-size: 0.55rem;
-					block-size: 0.55rem;
-					border-radius: 50%;
-					background: var(--accent);
-				}
-
-				.hero__aside {
-					display: grid;
-					gap: 1rem;
-					align-content: start;
-				}
-
-				.hero-figure {
-					display: grid;
-					place-items: center;
-					border: 1px solid var(--border);
-					border-radius: calc(var(--radius) - 0.25rem);
-					padding: 1rem;
-					background: color-mix(in oklch, var(--bg-color) 75%, canvas);
-				}
-
-				.hero-figure img {
-					inline-size: min(100%, 12rem);
-					block-size: auto;
-				}
-
-				.section {
-					padding: 1.3rem 0;
-				}
-
-				.section-head {
-					max-width: 46rem;
-					margin-bottom: 1rem;
-				}
-
-				.faq-list {
-					display: grid;
-					gap: 0.8rem;
-				}
-
-				.faq-item {
-					border: 1px solid var(--border);
-					border-radius: var(--radius);
-					background: color-mix(in oklch, var(--bg-secondary) 92%, canvas);
-					overflow: clip;
-				}
-
-				.faq-item summary {
-					position: relative;
-					cursor: pointer;
-					list-style: none;
-					padding: 1rem 3rem 1rem 1rem;
-					font-weight: 700;
-					color: var(--text-h);
-				}
-
-				.faq-item summary::-webkit-details-marker {
-					display: none;
-				}
-
-				.faq-item summary::after {
-					content: "+";
-					position: absolute;
-					right: 1rem;
-					top: 50%;
-					transform: translateY(-50%);
-					font-size: 1.45rem;
-					color: var(--accent);
-				}
-
-				.faq-item[open] summary::after {
-					content: "−";
-				}
-
-				.faq-item__body {
-					padding: 0 1rem 1rem;
-					color: var(--text-s);
-				}
-
-				.form-layout {
-					align-items: start;
-				}
-
-				.form-panel,
-				.contact-panel {
-					display: grid;
-					gap: 1rem;
-				}
-
-				.field-grid,
-				.form {
-					display: grid;
-					gap: 0.9rem;
-				}
-
-				.field {
-					display: grid;
-					gap: 0.45rem;
-				}
-
-				.field label,
-				.checkbox-row {
-					font-weight: 700;
-					color: var(--text-h);
-				}
-
-				.field :where(input, textarea) {
-					inline-size: 100%;
-					padding: 0.95rem 1rem;
-					border: 1px solid var(--border);
-					border-radius: calc(var(--radius) - 0.35rem);
-					background: color-mix(in oklch, var(--bg-secondary) 92%, canvas);
-					color: var(--text);
-				}
-
-				.field textarea {
-					min-block-size: 8rem;
-					resize: vertical;
-					field-sizing: content;
-				}
-
-				.field:has(:where(input, textarea):focus-visible) label {
-					color: var(--accent);
-				}
-
-				.field:has(:where(input, textarea):invalid:not(:placeholder-shown)) label {
-					color: var(--lx-color-danger);
-				}
-
-				.checkbox-row {
-					display: flex;
-					align-items: flex-start;
-					gap: 0.7rem;
-					font-size: 0.98rem;
-				}
-
-				.checkbox {
-					inline-size: 1.1rem;
-					block-size: 1.1rem;
-					margin-top: 0.15rem;
-					border: 1px solid var(--border);
-				}
-
-				.checkbox-row a,
-				.contact-link,
-				.submit-status a,
-				.footer-link {
-					color: var(--accent);
-				}
-
-				.submit-status {
-					min-block-size: 1.4rem;
-					font-size: 0.95rem;
-				}
-
-				.contact-group {
-					display: grid;
-					gap: 0.4rem;
-				}
-
-				.contact-group strong {
-					color: var(--text-h);
-				}
-
-				.map-card {
-					min-block-size: 14rem;
-					display: grid;
-					place-items: center;
-					text-align: center;
-					color: var(--text-s);
-					background:
-						linear-gradient(
-							135deg,
-							color-mix(in oklch, var(--accent) 10%, transparent),
-							color-mix(in oklch, var(--lx-color-success) 10%, transparent)
-						),
-						color-mix(in oklch, var(--bg-secondary) 90%, canvas);
-				}
-
-				.notice {
-					background: color-mix(in oklch, var(--lx-color-success) 10%, var(--bg-secondary));
-				}
-
-				.notice strong {
-					color: var(--text-h);
-				}
-
-				.site-footer {
-					padding: 1.25rem 0 6rem;
-					border-top: 1px solid var(--divider);
-				}
-
-				.footer-row {
-					color: var(--text-s);
-				}
-
-				.mobile-call {
-					position: fixed;
-					left: 0;
-					right: 0;
-					bottom: 0;
-					z-index: 45;
-					padding: 0.75rem;
-					padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0));
-					background: color-mix(in oklch, var(--bg-color) 92%, canvas);
-					backdrop-filter: blur(16px);
-					border-top: 1px solid var(--divider);
-				}
-
-				@media (min-width: 48rem) {
-					body {
-						padding-bottom: env(safe-area-inset-bottom, 0);
-					}
-
-					.site-header__inner {
-						grid-template-columns: auto 1fr auto;
-						align-items: center;
-					}
-
-					.nav {
-						justify-content: center;
-					}
-
-					.hero__grid,
-					.card-grid,
-					.info-grid,
-					.form-layout {
-						grid-template-columns: repeat(2, minmax(0, 1fr));
-					}
-
-					.hero__actions {
-						grid-template-columns: repeat(2, minmax(0, max-content));
-					}
-
-					.badge-list {
-						grid-template-columns: repeat(3, minmax(0, 1fr));
-					}
-
-					.card-grid--three {
-						grid-template-columns: repeat(3, minmax(0, 1fr));
-					}
-
-					.info-grid {
-						grid-template-columns: repeat(4, minmax(0, 1fr));
-					}
-
-					.hero__cities {
-						grid-template-columns: repeat(5, minmax(0, 1fr));
-					}
-
-					.faq-list {
-						grid-template-columns: repeat(2, minmax(0, 1fr));
-					}
-
-					.mobile-call {
-						display: none;
-					}
-
-					.site-footer {
-						padding-bottom: 2rem;
-					}
-
-					.footer-row {
-						grid-template-columns: 1fr auto;
-						align-items: center;
-					}
-				}
-
-				@media (min-width: 64rem) {
-					.hero__grid {
-						grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.75fr);
-						align-items: stretch;
-					}
-				}
-			}
-		</style>
+		<!-- Yandex.Metrika counter -->
+		<!-- TODO: Вставьте код Яндекс.Метрики -->
 	</head>
 	<body>
-		<!-- Yandex.Metrika counter -->
-		<a class="skip-link" href="#main-content">Перейти к содержимому</a>
+		<a href="#main-content" class="skip-link"
+			>Перейти к основному содержанию</a
+		>
 
-		<header class="site-header">
-			<div class="shell site-header__inner">
-				<div class="brand-row">
-					<a class="brand" href="#top" id="top">
-						<span class="brand__mark" aria-hidden="true">TV</span>
-						<span class="brand__text">
-							<strong>Ремонт телевизоров</strong>
-							<small>Новобурейский, сервисный центр</small>
-						</span>
-					</a>
-				</div>
-
-				<nav class="nav" aria-label="Основная навигация">
-					<a href="#services">Услуги</a>
-					<a href="#faq">FAQ</a>
-					<a href="#contacts">Контакты</a>
-				</nav>
-
-				<div class="header-actions">
+		<header class="header">
+			<div
+				class="container"
+				style="
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					gap: 1rem;
+					flex-wrap: wrap;
+				"
+			>
+				<div class="brand">
 					<a
-						class="header-phone"
-						href="tel:+79622930611"
-						rel="noopener noreferrer"
+						href="/"
+						style="
+							text-decoration: none;
+							font-weight: 700;
+							color: var(--text-h);
+							font-size: 1.25rem;
+						"
+						>📺 LeksTi</a
 					>
-						+7 (962) 293-06-11
-					</a>
-					<a class="button button--primary" href="#contacts">
-						Оставить заявку
-					</a>
+					<div style="font-size: 0.85rem; color: var(--text-s)">
+						Амурская область
+					</div>
 				</div>
+				<nav aria-label="Основная навигация">
+					<ul
+						style="
+							display: flex;
+							gap: 1.5rem;
+							flex-wrap: wrap;
+							list-style: none;
+							margin: 0;
+							padding: 0;
+						"
+					>
+						<li>
+							<a
+								href="#services"
+								style="
+									color: var(--text);
+									text-decoration: none;
+								"
+								>Услуги</a
+							>
+						</li>
+						<li>
+							<a
+								href="#faq"
+								style="
+									color: var(--text);
+									text-decoration: none;
+								"
+								>Вопросы</a
+							>
+						</li>
+						<li>
+							<a
+								href="#contacts"
+								style="
+									color: var(--text);
+									text-decoration: none;
+								"
+								>Контакты</a
+							>
+						</li>
+					</ul>
+				</nav>
+				<a
+					href="tel:+79622930611"
+					class="btn btn--outline"
+					style="min-block-size: 2.5rem; padding: 0.5rem 1rem"
+				>
+					+7 (962) 293-06-11
+				</a>
 			</div>
 		</header>
 
 		<main id="main-content">
-			<section class="hero section">
-				<div class="shell hero__grid">
-					<div class="hero__content">
-						<p class="eyebrow">Ремонт в сервисном центре</p>
-						<h1>Ремонт телевизоров в Новобурейском</h1>
-						<p class="hero__lead">
-							Основная услуга: замена подсветки, если звук есть, а изображения
-							нет. Диагностика, ремонт питания, восстановление после скачка
-							напряжения. Прием техники только в мастерской.
-						</p>
-
-						<ul class="badge-list" aria-label="Преимущества">
-							<li class="badge">Гарантия 6-12 мес.</li>
-							<li class="badge">Диагностика от 0 ₽ при ремонте</li>
-							<li class="badge">Ремонт в сервисном центре</li>
-						</ul>
-
-						<div class="hero__actions">
-							<a
-								class="button button--primary"
-								href="tel:+79622930611"
-								rel="noopener noreferrer"
-							>
-								Позвонить
-							</a>
-							<a
-								class="button button--secondary"
-								href="https://wa.me/79622930611"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								Написать в WhatsApp
-							</a>
-						</div>
-
-						<div class="notice">
-							<strong>Типовые симптомы:</strong>
-							<ul class="symptom-list">
-								<li>Звук есть, экран темный</li>
-								<li>Изображение появляется и сразу пропадает</li>
-								<li>Картинка видна только под фонариком</li>
-								<li>Экран мерцает или теряет яркость</li>
-							</ul>
-						</div>
-
-						<div class="hero__cities" aria-label="Населенные пункты">
-							<span class="city-chip">Новобурейский</span>
-							<span class="city-chip">Бурея</span>
-							<span class="city-chip">Прогресс</span>
-							<span class="city-chip">Талакан</span>
-							<span class="city-chip">Архара</span>
-						</div>
+			<!-- Hero -->
+			<section class="hero">
+				<div class="container text-center">
+					<h1>Ремонт телевизоров в Новобурейском</h1>
+					<p class="lead">
+						Замена LED-подсветки и диагностика. Ремонт выполняется в
+						сервисном центре. Выезд на дом не предусмотрен.
+					</p>
+					<div class="btn-group" style="justify-content: center">
+						<a href="tel:+79622930611" class="btn btn--primary"
+							>📞 Позвонить</a
+						>
+						<a
+							href="https://wa.me/79622930611"
+							rel="noopener noreferrer"
+							target="_blank"
+							class="btn btn--outline"
+							>💬 Написать в WhatsApp</a
+						>
 					</div>
+					<div
+						class="mt-2"
+						style="font-size: 0.9rem; color: var(--text-s)"
+					>
+						Обслуживаем: Новобурейский, Бурея, Талакан, Прогресс,
+						Архара, Завитинск
+					</div>
+				</div>
+			</section>
 
-					<aside class="hero__aside" aria-label="Иллюстрация и факты">
-						<div class="hero-figure">
-							<img
-								src="/public/tv-service.svg"
-								alt="Ремонт телевизоров в Новобурейском в сервисном центре"
-								width="128"
-								height="128"
-								loading="lazy"
-								decoding="async"
+			<!-- Services: Backlight -->
+			<section id="services">
+				<div class="container">
+					<h2 class="text-center">Замена подсветки телевизора</h2>
+					<p
+						class="lead text-center"
+						style="max-width: 800px; margin-inline: auto"
+					>
+						У LED-телевизоров это одна из самых частых причин
+						обращения. Проблема выглядит просто: телевизор
+						включается, звук идёт, индикатор работает, но экран
+						остаётся чёрным или тусклым.
+					</p>
+					<div class="grid grid--3">
+						<article class="card">
+							<h3>🔍 Что указывает на проблему</h3>
+							<p>
+								Звук есть, изображения нет. Экран загорается на
+								секунду и гаснет. Картинка видна только при
+								подсветке фонариком. Есть тёмные пятна или
+								мерцание.
+							</p>
+						</article>
+						<article class="card">
+							<h3>🛠 Что проверяет мастер</h3>
+							<p>
+								Блок питания, цепь драйвера подсветки, состояние
+								LED-линеек. При необходимости проводится
+								аккуратная разборка панели для замены вышедших
+								из строя компонентов.
+							</p>
+						</article>
+						<article class="card">
+							<h3>⚖️ Когда ремонт под вопросом</h3>
+							<p>
+								Если телевизору 10–12+ лет, есть следы
+								перегрева, тусклая матрица или медленный старт.
+								В таких случаях честнее обсудить
+								целесообразность ремонта до начала работ.
+							</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- Other Faults -->
+			<section>
+				<div class="container">
+					<h2 class="text-center">
+						С какими неисправностями обращаются
+					</h2>
+					<div class="grid grid--2">
+						<article class="card">
+							<h3>🔌 Телевизор не включается</h3>
+							<p>
+								Проверка блока питания, силовых плат и типовых
+								отказов запуска. Диагностика цепей защиты.
+							</p>
+						</article>
+						<article class="card">
+							<h3>📺 Изображение пропадает после старта</h3>
+							<p>
+								Диагностика подсветки, драйвера и перегруженных
+								цепей. Поиск причин срабатывания защиты.
+							</p>
+						</article>
+						<article class="card">
+							<h3>💡 Мерцание и провалы яркости</h3>
+							<p>
+								Проверка линеек подсветки, равномерности
+								свечения и состояния конденсаторов в цепи
+								питания.
+							</p>
+						</article>
+						<article class="card">
+							<h3>⚡ Проблемы после скачка напряжения</h3>
+							<p>
+								Проверка платы питания, стабилизаторов и
+								защитных узлов. Восстановление после перепадов в
+								сети.
+							</p>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- FAQ -->
+			<section id="faq">
+				<div class="container" style="max-width: 800px">
+					<h2 class="text-center">Частые вопросы и сроки</h2>
+					<details>
+						<summary>
+							Если звук есть, а изображения нет, это точно
+							подсветка?
+						</summary>
+						<div class="faq-content">
+							Не всегда, но это один из самых частых сценариев.
+							Именно поэтому замена подсветки вынесена как главная
+							услуга. Точный диагноз ставится после диагностики в
+							мастерской.
+						</div>
+					</details>
+					<details>
+						<summary>Сколько обычно служит телевизор?</summary>
+						<div class="faq-content">
+							У большинства LED и Smart TV рабочий ресурс
+							укладывается в 5–8 лет. Далее всё зависит от режима
+							эксплуатации, качества электросети, перегрева и
+							состояния подсветки.
+						</div>
+					</details>
+					<details>
+						<summary>Обычно имеет смысл ремонтировать?</summary>
+						<div class="faq-content">
+							Телевизоры до 7–8 лет с целой матрицей и без следов
+							удара. Для них замена подсветки часто остаётся
+							разумным и экономически выгодным сценарием.
+						</div>
+					</details>
+					<details>
+						<summary>
+							Когда старый телевизор обычно не стоит
+							ремонтировать?
+						</summary>
+						<div class="faq-content">
+							Если устройству больше 10–12 лет, яркость давно
+							упала, старт медленный, есть несколько
+							неисправностей сразу или модель морально устарела.
+						</div>
+					</details>
+					<details>
+						<summary>Что подготовить перед звонком?</summary>
+						<div class="faq-content">
+							Назовите диагональ, марку, примерный возраст
+							телевизора, опишите симптомы и скажите, было ли
+							изображение видно под фонариком. Так быстрее поймём,
+							идёт ли речь о подсветке.
+						</div>
+					</details>
+					<details>
+						<summary>Какие условия и гарантия?</summary>
+						<div class="faq-content">
+							Диагностика от 0 ₽ при последующем ремонте. Гарантия
+							на работу и заменённые запчасти составляет 6–12
+							месяцев. Все работы выполняются в оборудованной
+							мастерской.
+						</div>
+					</details>
+				</div>
+			</section>
+
+			<!-- Contact & Form -->
+			<section id="contacts">
+				<div class="container">
+					<h2 class="text-center">Оставить заявку</h2>
+					<p class="lead text-center">
+						Ремонт выполняется в сервисном центре. Оставьте контакты
+						— мастер свяжется для согласования времени приёма.
+					</p>
+
+					<form
+						id="repair-form"
+						class="card"
+						style="max-width: 600px; margin: 2rem auto"
+						novalidate
+					>
+						<div class="form-group">
+							<label for="name" class="form-label"
+								>Ваше имя</label
+							>
+							<input
+								type="text"
+								id="name"
+								name="name"
+								placeholder="Иван"
+								required
+								autocomplete="name"
 							/>
 						</div>
-
-						<div class="card">
-							<h3>Что важно знать до обращения</h3>
-							<ul class="card-list">
-								<li>Техника принимается только в мастерской</li>
-								<li>Старые телевизоры сначала оцениваются на рентабельность</li>
-								<li>После диагностики согласовываются срок и стоимость</li>
-							</ul>
-						</div>
-					</aside>
-				</div>
-			</section>
-
-			<section class="section" id="services">
-				<div class="shell">
-					<div class="section-head">
-						<p class="eyebrow">Основная услуга</p>
-						<h2>Замена подсветки телевизора</h2>
-						<p>
-							Частая причина обращения у LED-моделей. Если звук есть, а
-							изображения нет, диагностика обычно начинается с цепи подсветки.
-						</p>
-					</div>
-
-					<div class="card-grid card-grid--three">
-						<article class="card">
-							<h3>Что указывает на подсветку</h3>
-							<ul class="card-list">
-								<li>Экран черный, но телевизор включается</li>
-								<li>Изображение видно только под ярким светом</li>
-								<li>После запуска экран быстро гаснет</li>
-							</ul>
-						</article>
-
-						<article class="card">
-							<h3>Что проверяет мастер</h3>
-							<ul class="card-list">
-								<li>Блок питания и драйвер подсветки</li>
-								<li>Состояние LED-линеек и равномерность свечения</li>
-								<li>Сопутствующие неисправности платы</li>
-							</ul>
-						</article>
-
-						<article class="card">
-							<h3>Когда ремонт под вопросом</h3>
-							<ul class="card-list">
-								<li>Телевизору более 10-12 лет</li>
-								<li>Есть следы перегрева и несколько дефектов сразу</li>
-								<li>Матрица тусклая и техника морально устарела</li>
-							</ul>
-						</article>
-					</div>
-				</div>
-			</section>
-
-			<section class="section">
-				<div class="shell">
-					<div class="section-head">
-						<p class="eyebrow">Другие неисправности</p>
-						<h2>С чем еще обращаются в мастерскую</h2>
-						<p>
-							Кроме подсветки, выполняется диагностика и ремонт типовых отказов
-							питания, запуска и изображения.
-						</p>
-					</div>
-
-					<div class="info-grid">
-						<article class="card">
-							<h3>Не включается</h3>
-							<p>Проверка питания, платы, предохранителей и цепей запуска.</p>
-						</article>
-						<article class="card">
-							<h3>Гаснет после старта</h3>
-							<p>Диагностика подсветки, питания и перегруженных узлов.</p>
-						</article>
-						<article class="card">
-							<h3>Мерцание</h3>
-							<p>Проверка яркости, LED-линеек и стабильности подсветки.</p>
-						</article>
-						<article class="card">
-							<h3>Скачок напряжения</h3>
-							<p>Проверка платы питания и повреждений после сети.</p>
-						</article>
-					</div>
-				</div>
-			</section>
-
-			<section class="section" id="faq">
-				<div class="shell">
-					<div class="section-head">
-						<p class="eyebrow">FAQ</p>
-						<h2>Частые вопросы, сроки и гарантия</h2>
-						<p>
-							Перед ремонтом важно понять, сколько прослужила техника и есть ли
-							смысл вкладываться в восстановление.
-						</p>
-					</div>
-
-					<div class="faq-list">
-						<details class="faq-item" open>
-							<summary aria-expanded="true" aria-controls="faq-1">
-								Сколько обычно служит телевизор?
-							</summary>
-							<div class="faq-item__body" id="faq-1">
-								Большинство LED и Smart TV работают в среднем 5-8 лет. Дальше
-								состояние зависит от нагрузки, питания, перегрева и ресурса
-								подсветки.
-							</div>
-						</details>
-
-						<details class="faq-item">
-							<summary aria-expanded="false" aria-controls="faq-2">
-								Если звук есть, а изображения нет, это всегда подсветка?
-							</summary>
-							<div class="faq-item__body" id="faq-2">
-								Не всегда. Но это один из самых частых сценариев, поэтому
-								диагностика обычно начинается с подсветки и питания.
-							</div>
-						</details>
-
-						<details class="faq-item">
-							<summary aria-expanded="false" aria-controls="faq-3">
-								Когда старый телевизор уже невыгодно ремонтировать?
-							</summary>
-							<div class="faq-item__body" id="faq-3">
-								Если устройству больше 10-12 лет, есть несколько неисправностей
-								сразу или заметна деградация матрицы, сначала оценивается
-								рентабельность ремонта.
-							</div>
-						</details>
-
-						<details class="faq-item">
-							<summary aria-expanded="false" aria-controls="faq-4">
-								Сколько длится диагностика и ремонт?
-							</summary>
-							<div class="faq-item__body" id="faq-4">
-								Диагностика занимает от одного рабочего дня. Срок ремонта зависит
-								от модели, наличия запчастей и сложности дефекта.
-							</div>
-						</details>
-
-						<details class="faq-item">
-							<summary aria-expanded="false" aria-controls="faq-5">
-								Какая гарантия предоставляется?
-							</summary>
-							<div class="faq-item__body" id="faq-5">
-								На выполненные работы предоставляется гарантия 6-12 месяцев.
-								Диагностика от 0 ₽ при последующем ремонте.
-							</div>
-						</details>
-					</div>
-				</div>
-			</section>
-
-			<section class="section" id="contacts">
-				<div class="shell">
-					<div class="section-head">
-						<p class="eyebrow">Форма и контакты</p>
-						<h2>Оставьте заявку или свяжитесь напрямую</h2>
-						<p>
-							Прием телевизоров ведется в мастерской. Позвоните, напишите в
-							WhatsApp или отправьте форму для предварительного согласования.
-						</p>
-					</div>
-
-					<div class="form-layout">
-						<div class="form-panel">
-							<form
-								class="form"
-								id="lead-form"
-								action="https://formspree.io/f/placeholder"
-								method="post"
-								novalidate
+						<div class="form-group">
+							<label for="phone" class="form-label"
+								>Телефон</label
 							>
-								<div class="field-grid">
-									<div class="field">
-										<label for="name">Имя</label>
-										<input
-											id="name"
-											name="name"
-											type="text"
-											placeholder="Как к вам обращаться"
-											autocomplete="name"
-											required
-										/>
-									</div>
-
-									<div class="field">
-										<label for="phone">Телефон</label>
-										<input
-											id="phone"
-											name="phone"
-											type="tel"
-											inputmode="tel"
-											autocomplete="tel"
-											placeholder="+7 (___) ___-__-__"
-											pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
-											required
-										/>
-									</div>
-								</div>
-
-								<div class="field">
-									<label for="problem">Описание неисправности</label>
-									<textarea
-										id="problem"
-										name="problem"
-										placeholder="Например: звук есть, изображения нет, экран темный"
-										required
-									></textarea>
-								</div>
-
-								<label class="checkbox-row" for="policy">
-									<input
-										class="checkbox"
-										id="policy"
-										name="policy"
-										type="checkbox"
-										required
-									/>
-									<span>
-										Согласен на обработку персональных данных по 152-ФЗ.
-										<a href="/privacy.html">Политика конфиденциальности</a>
-									</span>
-								</label>
-
-								<button class="button button--primary button--full" type="submit">
-									Отправить заявку
-								</button>
-								<p class="form-note">
-									Если удобнее, напишите в WhatsApp или позвоните напрямую.
-								</p>
-								<div class="submit-status" id="submit-status" aria-live="polite"></div>
-							</form>
+							<input
+								type="tel"
+								id="phone"
+								name="phone"
+								placeholder="+7 (___) ___-__-__"
+								required
+								pattern="^\+7\s?\(?[0-9]{3}\)?\s?[0-9]{3}-?[0-9]{2}-?[0-9]{2}$"
+								autocomplete="tel"
+							/>
 						</div>
-
-						<div class="contact-panel">
-							<div class="contact-group">
-								<strong>Телефон</strong>
-								<a
-									class="contact-link"
-									href="tel:+79622930611"
-									rel="noopener noreferrer"
-								>
-									+7 (962) 293-06-11
-								</a>
-							</div>
-
-							<div class="contact-group">
-								<strong>WhatsApp</strong>
-								<a
-									class="contact-link"
-									href="https://wa.me/79622930611"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Написать в WhatsApp
-								</a>
-							</div>
-
-							<div class="contact-group">
-								<strong>Режим работы</strong>
-								<p>Пн-Сб: 09:00-18:00</p>
-							</div>
-
-							<div class="contact-group">
-								<strong>Формат работы</strong>
-								<ul class="contact-list">
-									<li>Ремонт в мастерской</li>
-									<li>Прием телевизоров в сервисном центре</li>
-									<li>Срок и стоимость после диагностики</li>
-								</ul>
-							</div>
-
-							<div class="map-card" aria-label="Плейсхолдер карты">
-								<div>
-									<strong>Карта / адрес</strong>
-									<p>Здесь будет карта и точный адрес мастерской.</p>
-								</div>
-							</div>
+						<div class="form-group">
+							<label for="message" class="form-label"
+								>Описание проблемы</label
+							>
+							<textarea
+								id="message"
+								name="message"
+								placeholder="Марка, диагональ, симптомы..."
+							></textarea>
 						</div>
+						<div class="form-group checkbox-wrapper">
+							<input
+								type="checkbox"
+								id="consent"
+								name="consent"
+								required
+							/>
+							<label for="consent"
+								>Я согласен на обработку персональных данных в
+								соответствии с
+								<a href="/privacy.html" rel="noopener"
+									>политикой конфиденциальности</a
+								>.</label
+							>
+						</div>
+						<button
+							type="submit"
+							class="btn btn--primary"
+							style="width: 100%; margin-top: 0.5rem"
+						>
+							Отправить заявку
+						</button>
+						<p
+							id="form-status"
+							style="
+								text-align: center;
+								margin-top: 0.5rem;
+								font-size: 0.9rem;
+								min-height: 1.2em;
+							"
+						></p>
+					</form>
+
+					<div
+						class="note text-center"
+						style="margin: 2rem auto; max-width: 600px"
+					>
+						<strong>Режим работы:</strong> Пн–Сб 10:00–19:00<br />
+						<strong>Телефон:</strong>
+						<a href="tel:+79622930611">+7 (962) 293-06-11</a> |
+						<a href="https://wa.me/79622930611" rel="noopener"
+							>WhatsApp</a
+						>
+					</div>
+
+					<div class="map-placeholder">
+						🗺 Здесь будет карта (Яндекс/Google Maps). Вставьте
+						iframe или JS-скрипт.
 					</div>
 				</div>
 			</section>
 		</main>
 
-		<footer class="site-footer">
-			<div class="shell footer-row">
+		<footer
+			class="footer"
+			style="
+				padding: 2rem 0;
+				background: var(--bg-secondary);
+				text-align: center;
+				color: var(--text-s);
+				font-size: 0.9rem;
+			"
+		>
+			<div class="container">
 				<p>
 					© <span id="year"></span>
-					<a class="footer-link" href="#" rel="noopener">LexTi®</a> — Все права
+					<a href="#" rel="noopener noreferrer">LexTi®</a> — Все права
 					защищены.
+					<a
+						href="/privacy.html"
+						rel="noopener"
+						style="margin-left: 0.5rem"
+						>Политика конфиденциальности</a
+					>
 				</p>
-				<p>
-					<a class="footer-link" href="/privacy.html">Политика конфиденциальности</a>
-				</p>
+				<a
+					href="tel:+79622930611"
+					style="
+						color: var(--accent);
+						text-decoration: none;
+						margin-top: 0.5rem;
+						display: inline-block;
+					"
+					>+7 (962) 293-06-11</a
+				>
 			</div>
 		</footer>
 
-		<div class="mobile-call">
-			<a
-				class="button button--primary button--full"
-				href="tel:+79622930611"
-				rel="noopener noreferrer"
-			>
-				Позвонить: +7 (962) 293-06-11
-			</a>
-		</div>
+		<!-- Mobile Sticky CTA -->
+		<a
+			href="tel:+79622930611"
+			class="sticky-cta btn btn--primary"
+			aria-label="Позвонить мастеру"
+		>
+			📞 Позвонить: +7 (962) 293-06-11
+		</a>
 
 		<script>
-			const faqItems = document.querySelectorAll(".faq-item");
-			const yearNode = document.getElementById("year");
+			// 1. Динамический год в футере
+			document.getElementById("year").textContent =
+				new Date().getFullYear();
+
+			// 2. Валидация и отправка формы (заглушка)
+			const form = document.getElementById("repair-form");
+			const status = document.getElementById("form-status");
 			const phoneInput = document.getElementById("phone");
-			const form = document.getElementById("lead-form");
-			const statusNode = document.getElementById("submit-status");
 
-			yearNode.textContent = new Date().getFullYear();
-
-			faqItems.forEach((item) => {
-				const summary = item.querySelector("summary");
-				const syncExpanded = () => {
-					summary.setAttribute("aria-expanded", String(item.open));
-				};
-				syncExpanded();
-				item.addEventListener("toggle", syncExpanded);
+			// Простая маска/паттерн для телефона
+			phoneInput.addEventListener("input", (e) => {
+				let x = e.target.value
+					.replace(/\D/g, "")
+					.match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+				e.target.value = !x[2]
+					? x[1]
+					: `+7 (${x[2]}) ${x[3] ? x[3] + "-" : ""}${x[4] ? x[4] + "-" : ""}${x[5]}`;
 			});
 
-			document.querySelectorAll('a[href^="#"]').forEach((link) => {
-				link.addEventListener("click", (event) => {
-					const targetId = link.getAttribute("href");
-					if (!targetId || targetId === "#") return;
-					const target = document.querySelector(targetId);
-					if (!target) return;
-					event.preventDefault();
-					target.scrollIntoView({ behavior: "smooth", block: "start" });
-				});
-			});
-
-			const formatPhone = (value) => {
-				const digits = value.replace(/\D/g, "").replace(/^8/, "7").slice(0, 11);
-				if (!digits) return "";
-				const normalized = digits.startsWith("7") ? digits : `7${digits}`;
-				const part1 = normalized.slice(1, 4);
-				const part2 = normalized.slice(4, 7);
-				const part3 = normalized.slice(7, 9);
-				const part4 = normalized.slice(9, 11);
-				let result = "+7";
-				if (part1) result += ` (${part1}`;
-				if (part1.length === 3) result += ")";
-				if (part2) result += ` ${part2}`;
-				if (part3) result += `-${part3}`;
-				if (part4) result += `-${part4}`;
-				return result;
-			};
-
-			phoneInput.addEventListener("input", () => {
-				phoneInput.value = formatPhone(phoneInput.value);
-			});
-
-			form.addEventListener("submit", async (event) => {
-				event.preventDefault();
-				statusNode.textContent = "";
-
-				if (!form.reportValidity()) {
-					statusNode.textContent = "Проверьте форму и заполните обязательные поля.";
+			form.addEventListener("submit", (e) => {
+				e.preventDefault();
+				if (!form.checkValidity()) {
+					status.textContent =
+						"Пожалуйста, заполните обязательные поля корректно.";
+					status.style.color = "var(--lx-color-danger)";
 					return;
 				}
 
-				const formData = new FormData(form);
-				const endpoint = form.getAttribute("action") || "";
+				// Имитация отправки
+				status.textContent =
+					"Заявка отправлена. Мастер свяжется с вами в ближайшее время.";
+				status.style.color = "var(--lx-color-success)";
+				form.reset();
 
-				try {
-					if (endpoint.includes("placeholder")) {
-						await new Promise((resolve) => setTimeout(resolve, 500));
-					} else {
-						const response = await fetch(endpoint, {
-							method: "POST",
-							body: formData,
-							headers: { Accept: "application/json" }
+				// TODO: Здесь можно добавить fetch() к Formspree, Telegram API или вашему бэкенду
+				// fetch('/api/submit', { method: 'POST', body: new FormData(form) })
+			});
+
+			// 3. Плавный скролл для якорей (fallback для старых браузеров)
+			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+				anchor.addEventListener("click", function (e) {
+					e.preventDefault();
+					const target = document.querySelector(
+						this.getAttribute("href"),
+					);
+					if (target) {
+						target.scrollIntoView({
+							behavior: "smooth",
+							block: "start",
 						});
-
-						if (!response.ok) {
-							throw new Error("submit_failed");
-						}
+						target.focus({ preventScroll: true });
 					}
-
-					form.reset();
-					statusNode.textContent =
-						"Заявка отправлена. Свяжемся после проверки обращения.";
-				} catch {
-					statusNode.innerHTML =
-						'Не удалось отправить форму. Позвоните по <a href="tel:+79622930611" rel="noopener noreferrer">+7 (962) 293-06-11</a> или напишите в WhatsApp.';
-				}
+				});
 			});
 		</script>
 	</body>
