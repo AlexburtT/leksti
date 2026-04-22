@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="TV service icon">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d5f5b"/>
+      <stop offset="100%" stop-color="#073c3a"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0a43a"/>
+      <stop offset="100%" stop-color="#fff3d2"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="url(#bg)"/>
+  <rect x="22" y="28" width="84" height="56" rx="12" fill="none" stroke="#eff8f7" stroke-width="8"/>
+  <path d="M39 93h50" stroke="#eff8f7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M51 99l13-15 13 15" fill="none" stroke="#eff8f7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="87" cy="56" r="8" fill="url(#screen)"/>
+  <path d="M37 58l10-10 11 11 17-17" fill="none" stroke="url(#screen)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

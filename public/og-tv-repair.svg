@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="TV repair landing preview">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#063937"/>
+      <stop offset="100%" stop-color="#0d5f5b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0a43a"/>
+      <stop offset="100%" stop-color="#fff1ce"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1040" cy="110" r="180" fill="#0f706c" opacity="0.45"/>
+  <circle cx="180" cy="530" r="220" fill="#1a8a85" opacity="0.25"/>
+  <rect x="92" y="96" width="520" height="338" rx="40" fill="none" stroke="#eff8f7" stroke-width="18"/>
+  <path d="M222 483h264" stroke="#eff8f7" stroke-width="18" stroke-linecap="round"/>
+  <path d="M280 520l72-86 72 86" fill="none" stroke="#eff8f7" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M180 280l68-68 74 74 114-114" fill="none" stroke="url(#accent)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="512" cy="230" r="44" fill="url(#accent)"/>
+  <text x="690" y="205" fill="#fff4da" font-family="Arial, sans-serif" font-size="38" font-weight="700" letter-spacing="4">NOVOBUREYSKY</text>
+  <text x="690" y="286" fill="#ffffff" font-family="Arial, sans-serif" font-size="88" font-weight="700">TV REPAIR</text>
+  <text x="690" y="356" fill="#d9ecea" font-family="Arial, sans-serif" font-size="34">BACKLIGHT REPLACEMENT</text>
+  <text x="690" y="412" fill="#d9ecea" font-family="Arial, sans-serif" font-size="34">SOUND ON, NO PICTURE</text>
+  <rect x="690" y="464" width="360" height="72" rx="36" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-opacity="0.2"/>
+  <text x="728" y="510" fill="#ffffff" font-family="Arial, sans-serif" font-size="30" font-weight="700">AMUR REGION SERVICE AREA</text>
+</svg>

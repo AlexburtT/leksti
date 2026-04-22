@@ -1,0 +1,194 @@
+/* ==========================================================================
+   @layer base — переменные, типографика, body, a11y
+   ========================================================================== */
+
+@layer base {
+	:root {
+		/* Font Families */
+		--sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+		--mono: "SF Mono", "Monaco", "JetBrains Mono", ui-monospace, monospace;
+
+		color-scheme: light dark;
+
+		/* ─── Фоны ─── */
+		--bg-color: light-dark(
+			var(--lx-color-surface),
+			oklch(from var(--lx-color-surface) clamp(0.12, l - 0.75, 0.2) c h)
+		);
+
+		--bg-secondary: light-dark(
+			oklch(from var(--lx-color-surface) clamp(0.88, l - 0.08, 0.94) c h),
+			oklch(from var(--bg-color) clamp(0.2, l + 0.1, 0.3) c h)
+		);
+
+		/* ─── Текст: УВЕЛИЧЕННЫЕ ДЕЛЬТЫ для гарантии контраста ─── */
+
+		/* Основной: WCAG AA (4.5:1)
+       Светлая: L ≤ 0.38, Тёмная: L ≥ 0.75 */
+		--text: light-dark(
+			oklch(
+				from var(--lx-color-surface) clamp(0.18, l - 0.6, 0.38)
+					/* Увеличено с 0.52 до 0.60 */ calc(c * 0.4) h
+			),
+			oklch(
+				from var(--lx-color-surface) clamp(0.75, l + 0.6, 0.9)
+					/* Увеличено с 0.52 до 0.60 */ calc(c * 0.35) h
+			)
+		);
+
+		/* Заголовки: WCAG AAA (7:1)
+       Светлая: L ≤ 0.28, Тёмная: L ≥ 0.88 */
+		--text-h: light-dark(
+			oklch(
+				from var(--lx-color-surface) clamp(0.08, l - 0.7, 0.28)
+					/* Увеличено с 0.72 до 0.70, но нижняя граница 0.08 */
+					calc(c * 0.6) h
+			),
+			oklch(
+				from var(--lx-color-surface) clamp(0.88, l + 0.75, 0.98)
+					/* Увеличено с 0.72 до 0.75 */ calc(c * 0.25) h
+			)
+		);
+
+		/* Вторичный: WCAG AA (4.5:1), но визуально мягче
+       Светлая: L ≈ 0.50-0.60, Тёмная: L ≈ 0.65-0.75 */
+		--text-s: light-dark(
+			oklch(
+				from var(--lx-color-surface) clamp(0.45, l - 0.42, 0.6)
+					/* Увеличено с 0.38 до 0.42 */ calc(c * 0.3) h
+			),
+			oklch(
+				from var(--lx-color-surface) clamp(0.65, l + 0.5, 0.75)
+					/* Увеличено с 0.38 до 0.50 */ calc(c * 0.25) h
+			)
+		);
+
+		--accent: light-dark(
+			/* Светлая: чуть темнее + буст хроматичности для чёткости на светлом фоне */
+				oklch(
+					from var(--lx-color-primary) clamp(0.38, l - 0.12, 0.48)
+						calc(c * 1.1) h
+				),
+			/* Тёмная: светлее + мягкое снижение хроматичности против "гало-эффекта" */
+				oklch(
+					from var(--lx-color-primary) clamp(0.65, l + 0.18, 0.75)
+						calc(c * 0.9) h
+				)
+		);
+		/* Видимые рамки: input, card, table — H от surface даёт «тонированный» бордер */
+		--border: light-dark(
+			oklch(from var(--lx-color-surface) calc(l - 0.13) calc(c * 2.5) h),
+			oklch(
+				from var(--lx-color-surface)
+					clamp(calc(1 - l + 0.13), 0.25, 0.35) calc(c * 2) h
+			)
+		);
+
+		/* Тонкие разделители — менее заметны чем border */
+		--divider: light-dark(
+			oklch(from var(--lx-color-surface) calc(l - 0.08) calc(c * 2) h),
+			oklch(
+				from var(--lx-color-surface)
+					clamp(calc(1 - l + 0.18), 0.28, 0.38) calc(c * 1.8) h
+			)
+		);
+
+		/* Неактивные элементы, placeholder, скроллбар */
+		--disabled: light-dark(
+			oklch(from var(--lx-color-surface) calc(l - 0.38) calc(c * 1.5) h),
+			oklch(
+				from var(--lx-color-surface)
+					clamp(calc(1 - l - 0.15), 0.35, 0.45) calc(c * 1.2) h
+			)
+		);
+
+		/* Spacing & sizing */
+		--space: clamp(0.75rem, 2vw, 1.5rem);
+		--radius: 0.5rem;
+	}
+
+	/* Selection */
+	::selection {
+		background: var(--accent-muted);
+		color: var(--text);
+	}
+
+	/* Scroll margin for anchors */
+	:where(h1, h2, h3, h4, h5, h6, [id]) {
+		scroll-margin-top: 5rem;
+	}
+
+	/* Textarea auto-resize */
+	@supports (field-sizing: content) {
+		:where(textarea) {
+			field-sizing: content;
+			min-block-size: 6rem;
+		}
+	}
+
+	/* Hyphens */
+	:where(p, li, dd, blockquote, figcaption) {
+		hyphens: auto;
+	}
+
+	/* BODY — Mobile-first layout */
+	body {
+		font: clamp(1rem, 1vw + 0.55rem, 1.125rem) / 145% var(--sans);
+		padding-inline: env(safe-area-inset-left, 0)
+			env(safe-area-inset-right, 0);
+		padding-bottom: env(safe-area-inset-bottom, 0);
+		transition:
+			color 0.5s,
+			background-color 0.5s;
+	}
+
+	main {
+		padding: var(--space);
+	}
+
+	/* Typography */
+	h1,
+	h2 {
+		font-family: var(--sans);
+		font-weight: 600;
+		line-height: 1.2;
+	}
+
+	h1 {
+		font-size: clamp(2.25rem, 5vw + 0.5rem, 3.5rem);
+		letter-spacing: -0.02em;
+		margin: 2rem 0;
+	}
+
+	h2 {
+		font-size: clamp(1.25rem, 0.75vw + 0.9rem, 1.5rem);
+		margin: 0 0 0.5rem;
+	}
+
+	p {
+		margin: 0 0 1em;
+	}
+
+	a {
+		color: var(--accent);
+		text-decoration: underline;
+	}
+
+	a:hover {
+		text-decoration: none;
+	}
+
+	code {
+		font-family: var(--mono);
+		font-size: 0.9375rem;
+		padding: 0.25rem 0.5rem;
+		background: var(--accent-subtle);
+		border-radius: 0.25rem;
+	}
+
+	/* Header & Footer */
+	.header,
+	.footer {
+		padding: var(--space);
+	}
+}
