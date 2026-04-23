@@ -1,0 +1,79 @@
+/* ==========================================================================
+   @layer functions — CSS Custom Functions + Graceful Fallbacks
+   Подключение через @supports: если браузер не понимает @function,
+   он игнорирует блок, и остаются нативные oklch()/color-mix().
+   ========================================================================== */
+@layer functions {
+	/* ─── 1. FALLBACKS (работают в 100% современных браузеров) ─── */
+	:root {
+		--f-alpha--header: oklch(from var(--bg-color) l c h / 85%);
+		--f-alpha--mobile: oklch(from var(--bg-color) l c h / 92%);
+		--f-accent--tint: color-mix(in oklch, var(--accent) 8%, transparent);
+		--f-success--text: color-mix(
+			in oklch,
+			var(--lx-color-success) 80%,
+			black
+		);
+		--f-warning--text: color-mix(
+			in oklch,
+			var(--lx-color-warning) 60%,
+			black
+		);
+		--f-shadow--card: 0 2px 12px
+			color-mix(in oklch, var(--text-h) 5%, transparent);
+		--f-shadow--glow: 0 0 0 3px
+			color-mix(in oklch, var(--accent) 12%, transparent);
+	}
+
+	/* ─── 2. FEATURE DETECTION ─── */
+	@supports (background: --test()) {
+		/* ─── 2.1 Функции ─── */
+		@function --alpha(--color <color>, --opacity <number>: 0.5) returns
+			<color> {
+			result: oklch(from var(--color) l c h / var(--opacity));
+		}
+
+		@function --lighten(--color <color>, --delta <number>: 0.15) returns
+			<color> {
+			result: oklch(from var(--color) clamp(0, l + var(--delta), 1) c h);
+		}
+
+		@function --darken(--color <color>, --delta <number>: 0.15) returns
+			<color> {
+			result: oklch(from var(--color) clamp(0, l - var(--delta), 1) c h);
+		}
+
+		@function --safe-shadow(
+			--color <color>,
+			--elevation <length>: 0.25rem
+		) {
+			result:
+				0 var(--elevation) calc(var(--elevation) * 2)
+					--alpha(var(--color), 0.08),
+				0 0 0 1px --alpha(var(--color), 0.04);
+			@media (prefers-reduced-motion: reduce),
+				(prefers-reduced-transparency: reduce) {
+				result: none;
+			}
+		}
+
+		/* ─── 2.2 Переопределение fallback-переменных функциями ─── */
+		:root {
+			--f-alpha--header: --alpha(var(--bg-color), 0.85);
+			--f-alpha--mobile: --alpha(var(--bg-color), 0.92);
+			--f-accent--tint: --alpha(var(--accent), 0.08);
+			--f-success--text: color-mix(
+				in oklch,
+				var(--lx-color-success) 80%,
+				black
+			);
+			--f-warning--text: color-mix(
+				in oklch,
+				var(--lx-color-warning) 60%,
+				black
+			);
+			--f-shadow--card: --safe-shadow(var(--text-h), 0.25rem);
+			--f-shadow--glow: 0 0 0 3px --alpha(var(--accent), 0.12);
+		}
+	}
+}

@@ -1,13 +1,17 @@
 /* 1. @property — ВСЕГДА первым (вне @layer!) */
 @import "properties.css";
 
-/* 1.2 Импорт файлов с привязкой к слоям */
-/* Синтаксис layer(name) помещает содержимое файла в конкретный слой */
-@import "reset.css" layer(reset);
+/* 2. Вычислительный слой (функции + фоллбэки) */
+@import "functions.css" layer(functions);
+
+/* 3. Базовая тема и сброс */
 @import "base.css" layer(base);
 @import "a11y.css" layer(a11y);
+
+/* 4. Компоненты UI */
+@import "landing.css" layer(components);
+
 /* ==========================================================================
-   2. ПОРЯДОК СЛОЁВ (CASCADE ORDER)
-   Определяет, кто кого переопределяет при равной специфичности.
+   5. CASCADE ORDER (специфичность при равных селекторах)
    ========================================================================== */
-@layer reset, base, a11y, components;
+@layer reset, functions, base, a11y, components;
