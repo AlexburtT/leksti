@@ -43,6 +43,7 @@
 			result: oklch(from var(--color) clamp(0, l - var(--delta), 1) c h);
 		}
 
+		/* stylelint-disable-next-line at-rule-no-unknown */
 		@function --safe-shadow(
 			--color <color>,
 			--elevation <length>: 0.25rem

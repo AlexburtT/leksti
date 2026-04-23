@@ -4,39 +4,19 @@
 @layer components {
 	/* ─── Body / Global ─── */
 
-	body {
+	.conteiner {
 		width: min(100%, 75rem);
+		margin: 0 auto;
+		padding: var(--space);
+	}
+
+	body {
+		display: grid;
+		grid-template-rows: auto 1fr auto;
 		min-height: 100dvh;
-		margin-inline: auto;
-		padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0));
-		background:
-  /* Верхний левый */
-			radial-gradient(
-				circle at top left,
-				color-mix(in oklch, var(--accent) 20%, canvas) 0%,
-				transparent 35%
-			),
-			/* Нижний правый */
-				radial-gradient(
-					circle at bottom right,
-					color-mix(in oklch, var(--lx-color-success) 25%, canvas) 0%,
-					transparent 30%
-				),
-			var(--bg-color);
-
-		/* Увеличиваем фон для анимации */
-		background-size: 120% 120%;
-		background-position: 0% 0%;
-
-		/* Анимация "дыхания" */
-		animation: wave-breathe 15s infinite ease-in-out;
 	}
 
-	:where(section[id], footer[id]) {
-		scroll-margin-top: 5.5rem;
-	}
-
-	@keyframes wave-breathe {
+	/*@keyframes wave-breathe {
 		0%,
 		100% {
 			background-position: 0% 0%;
@@ -44,7 +24,7 @@
 		50% {
 			background-position: 10% 10%;
 		}
-	}
+	}*/
 
 	/* ─── Scroll-linked Animations (View Timeline API) ───
    Поддержка: Chrome 114+, Edge 114+, Safari 16.4+ (iOS 16.4+), Firefox 120+ (но с багами) */
@@ -120,14 +100,18 @@
 		position: sticky;
 		top: 0;
 		z-index: 40;
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		gap: var(--space);
+
 		border-bottom: 1px solid var(--divider);
 		box-shadow: var(--f-shadow--card);
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
+
+		.conteiner {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: var(--space);
+		}
 	}
 
 	.brand-row,
@@ -276,9 +260,6 @@
 	/* ================================================================
    HERO
    ================================================================ */
-	.hero {
-		padding: 2.5rem 0 3.5rem;
-	}
 
 	.hero__grid {
 		display: grid;
@@ -297,28 +278,8 @@
 		display: none;
 	}
 
-	.eyebrow {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4rem;
-		margin-bottom: 1.25rem;
-		padding: 0.35rem 0.75rem;
-		border-radius: 999px;
-		background: var(--f-accent--tint);
-		color: var(--accent);
-		font-size: 0.78rem;
-		font-weight: 600;
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
-		border: none;
-	}
-
 	h1 {
-		margin: 0 0 1rem;
-		font-size: clamp(2rem, 7vw, 3.25rem);
-		line-height: 1.05;
-		letter-spacing: -0.035em;
-		max-width: 14ch;
+		max-width: 17ch;
 	}
 
 	h1 br {
@@ -346,549 +307,5 @@
 		line-height: 1.65;
 		color: var(--text-s);
 		margin: 0 0 1.5rem;
-	}
-
-	/* ─── Badges ─── */
-	.hero__actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.75rem;
-		margin: 0 0 2rem;
-	}
-
-	.badge-list,
-	.symptom-list,
-	.card-list,
-	.contact-list {
-		display: grid;
-		gap: 0.6rem;
-	}
-
-	.hero__cities {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		margin-top: 1.5rem;
-	}
-
-	.badge-list {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-	}
-
-	.badge {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.4rem;
-		padding: 0.4rem 0.75rem;
-		border-radius: 999px;
-		font-size: 0.78rem;
-		font-weight: 600;
-		border: none;
-		background: var(--bg-secondary);
-		color: var(--text-h);
-	}
-
-	.badge svg {
-		flex-shrink: 0;
-	}
-
-	.badge--accent {
-		background: var(--f-accent--tint);
-		color: var(--accent);
-	}
-
-	.badge--success {
-		background: color-mix(
-			in oklch,
-			var(--lx-color-success) 10%,
-			transparent
-		);
-		color: color-mix(in oklch, var(--lx-color-success) 80%, black);
-	}
-
-	.badge--warning {
-		background: color-mix(
-			in oklch,
-			var(--lx-color-warning) 15%,
-			transparent
-		);
-		color: color-mix(in oklch, var(--lx-color-warning) 60%, black);
-	}
-
-	.city-chip {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.3rem;
-		padding: 0.3rem 0.65rem;
-		border-radius: 999px;
-		font-size: 0.75rem;
-		border: 1px solid var(--divider);
-		background: transparent;
-		color: var(--text-s);
-	}
-
-	.city-chip svg {
-		flex-shrink: 0;
-	}
-
-	/* ─── Symptom notice ─── */
-	.notice {
-		padding: 1.25rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius);
-		background: var(--bg-secondary);
-		box-shadow: none;
-	}
-
-	.notice::before {
-		display: none;
-	}
-
-	.notice strong {
-		color: var(--text-h);
-		font-size: 0.9rem;
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4rem;
-		margin-bottom: 0.6rem;
-	}
-
-	.notice strong svg {
-		flex-shrink: 0;
-	}
-
-	.symptom-list li,
-	.card-list li,
-	.contact-list li {
-		position: relative;
-		display: flex;
-		align-items: flex-start;
-		gap: 0.5rem;
-		padding-left: 0;
-		font-size: 0.9rem;
-		color: var(--text-s);
-		list-style: none;
-	}
-
-	.symptom-list li svg,
-	.card-list li svg,
-	.contact-list li svg {
-		flex-shrink: 0;
-		margin-top: 0.1rem;
-	}
-
-	/* ─── Hero Aside ─── */
-	.hero__aside {
-		display: grid;
-		gap: 1rem;
-		align-content: start;
-	}
-
-	.hero-figure {
-		position: relative;
-		display: grid;
-		place-items: center;
-		border: 1px solid var(--divider);
-		border-radius: var(--radius);
-		padding: 2rem;
-		background: var(--bg-secondary);
-	}
-
-	.hero-figure img {
-		inline-size: min(100%, 10rem);
-		block-size: auto;
-		opacity: 0.85;
-	}
-
-	.hero-figure__badge {
-		position: absolute;
-		bottom: -0.5rem;
-		left: 1rem;
-		padding: 0.3rem 0.65rem;
-		font-size: 0.75rem;
-	}
-
-	/* ================================================================
-   CARDS
-   ================================================================ */
-	.card-grid,
-	.info-grid,
-	.form-layout,
-	.footer-row {
-		display: grid;
-		gap: 1rem;
-	}
-
-	.card,
-	.contact-panel,
-	.form-panel,
-	.map-card {
-		position: relative;
-		border: 1px solid var(--divider);
-		border-radius: var(--radius);
-		padding: 1.5rem;
-		background: var(--bg-color);
-		box-shadow: none;
-		transition:
-			box-shadow 0.2s ease,
-			border-color 0.2s ease;
-	}
-
-	.card:hover,
-	.contact-panel:hover,
-	.form-panel:hover {
-		border-color: var(--border);
-		box-shadow: var(--f-shadow--card);
-	}
-
-	.card::before,
-	.contact-panel::before,
-	.form-panel::before,
-	.map-card::before {
-		display: none;
-	}
-
-	/* ================================================================
-   SECTIONS
-   ================================================================ */
-	.section {
-		padding: 3.5rem 0;
-	}
-
-	.section--alt {
-		background: var(--bg-secondary);
-	}
-
-	.section-head {
-		max-width: 42rem;
-		margin-bottom: 2rem;
-	}
-
-	.section-head p {
-		color: var(--text-s);
-		font-size: 1rem;
-		line-height: 1.6;
-		margin-top: 0.5rem;
-	}
-
-	.card p {
-		color: var(--text-s);
-		font-size: 0.9rem;
-		line-height: 1.55;
-	}
-
-	/* ================================================================
-   FAQ
-   ================================================================ */
-	.faq-list {
-		display: grid;
-		gap: 0.5rem;
-	}
-
-	.faq-item {
-		border: 1px solid var(--divider);
-		border-radius: var(--radius);
-		background: var(--bg-color);
-		overflow: clip;
-		transition: border-color 0.15s ease;
-	}
-
-	.faq-item:hover {
-		border-color: var(--border);
-	}
-
-	.faq-item summary {
-		position: relative;
-		cursor: pointer;
-		list-style: none;
-		padding: 1.1rem 3rem 1.1rem 1.25rem;
-		font-weight: 600;
-		font-size: 0.95rem;
-		color: var(--text-h);
-		transition: color 0.15s ease;
-	}
-
-	.faq-item summary:hover {
-		color: var(--accent);
-	}
-
-	.faq-item summary::-webkit-details-marker {
-		display: none;
-	}
-
-	.faq-item summary::after {
-		content: "+ ";
-		position: absolute;
-		right: 1.25rem;
-		top: 50%;
-		transform: translateY(-50%);
-		font-size: 1.25rem;
-		font-weight: 400;
-		color: var(--accent);
-		line-height: 1;
-	}
-
-	.faq-item[open] summary::after {
-		content: "\2212 ";
-	}
-
-	.faq-item__body {
-		padding: 0 1.25rem 1.1rem;
-		color: var(--text-s);
-		font-size: 0.9rem;
-		line-height: 1.65;
-	}
-
-	/* ================================================================
-   FORM
-   ================================================================ */
-	.form-layout {
-		align-items: start;
-		gap: 1.5rem;
-	}
-
-	.form-panel,
-	.contact-panel {
-		display: grid;
-		gap: 1rem;
-	}
-
-	.field-grid,
-	.form {
-		display: grid;
-		gap: 1rem;
-	}
-
-	.field {
-		display: grid;
-		gap: 0.4rem;
-	}
-
-	.field label,
-	.checkbox-row {
-		font-weight: 600;
-		font-size: 0.85rem;
-		color: var(--text-h);
-	}
-
-	.field :where(input, textarea) {
-		inline-size: 100%;
-		padding: 0.75rem 0.9rem;
-		border: 1px solid var(--border);
-		border-radius: calc(var(--radius) - 0.2rem);
-		background: var(--bg-color);
-		color: var(--text);
-		font-size: 0.9rem;
-		transition:
-			border-color 0.15s ease,
-			box-shadow 0.15s ease;
-	}
-
-	.field :where(input, textarea):focus-visible {
-		border-color: var(--accent);
-		box-shadow: var(--f-shadow--glow);
-	}
-
-	.field textarea {
-		min-block-size: 7rem;
-		resize: vertical;
-		field-sizing: content;
-	}
-
-	.field:has(:where(input, textarea):focus-visible) label {
-		color: var(--accent);
-	}
-
-	.field:has(:where(input, textarea):invalid:not(:placeholder-shown)) label {
-		color: var(--lx-color-danger);
-	}
-
-	.checkbox-row {
-		display: flex;
-		align-items: flex-start;
-		gap: 0.6rem;
-		font-size: 0.82rem;
-		font-weight: 500;
-		color: var(--text-s);
-	}
-
-	.checkbox {
-		inline-size: 1.05rem;
-		block-size: 1.05rem;
-		margin-top: 0.1rem;
-		border: 1px solid var(--border);
-		border-radius: 0.2rem;
-	}
-
-	.checkbox-row a,
-	.contact-link,
-	.submit-status a,
-	.footer-link {
-		color: var(--accent);
-		text-decoration: underline;
-		text-decoration-thickness: 1px;
-		text-underline-offset: 2px;
-	}
-
-	.form-note {
-		color: var(--text-s);
-		font-size: 0.82rem;
-	}
-
-	.submit-status {
-		min-block-size: 1.4rem;
-		font-size: 0.9rem;
-	}
-
-	/* ================================================================
-   CONTACTS
-   ================================================================ */
-	.contact-group {
-		display: grid;
-		gap: 0.25rem;
-	}
-
-	.contact-group strong {
-		color: var(--text-h);
-		font-size: 0.85rem;
-	}
-
-	.contact-group p,
-	.contact-group a {
-		font-size: 0.9rem;
-		color: var(--text-s);
-	}
-
-	.contact-link {
-		text-decoration: none;
-	}
-
-	.contact-link:hover {
-		text-decoration: underline;
-	}
-
-	.map-card {
-		min-block-size: 12rem;
-		display: grid;
-		place-items: center;
-		text-align: center;
-		color: var(--text-s);
-		background: var(--bg-secondary);
-	}
-
-	/* ================================================================
-   FOOTER
-   ================================================================ */
-	.site-footer {
-		padding: 1.5rem 0 6rem;
-		border-top: 1px solid var(--divider);
-	}
-
-	.footer-row {
-		color: var(--text-s);
-		font-size: 0.85rem;
-	}
-
-	/* ================================================================
-   MOBILE CALL BAR
-   ================================================================ */
-	.mobile-call {
-		position: fixed;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		z-index: 45;
-		padding: 0.6rem 1rem;
-		padding-bottom: calc(0.6rem + env(safe-area-inset-bottom, 0));
-		background: var(--f-alpha--mobile);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		border-top: 1px solid var(--divider);
-	}
-
-	/* ================================================================
-   RESPONSIVE
-   ================================================================ */
-
-	/* ─── Tablet (768px+) ─── */
-	@media (min-width: 48rem) {
-		body {
-			padding-bottom: env(safe-area-inset-bottom, 0);
-		}
-
-		.shell {
-			width: min(100% - 3rem, 68rem);
-		}
-
-		.site-header__inner {
-			grid-template-columns: auto 1fr auto;
-			align-items: center;
-		}
-
-		.nav {
-			justify-content: center;
-		}
-
-		.hero {
-			padding: 4rem 0 5rem;
-		}
-
-		.hero__grid,
-		.form-layout {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-			gap: 3rem;
-		}
-
-		.hero__actions {
-			grid-template-columns: repeat(2, minmax(0, max-content));
-		}
-
-		.card-grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-
-		.info-grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-
-		.section {
-			padding: 5rem 0;
-		}
-
-		.faq-list {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-
-		.mobile-call {
-			display: none;
-		}
-
-		.site-footer {
-			padding-bottom: 2rem;
-		}
-
-		.footer-row {
-			grid-template-columns: 1fr auto;
-			align-items: center;
-		}
-	}
-
-	/* ─── Desktop (1024px+) ─── */
-	@media (min-width: 64rem) {
-		.hero__grid {
-			grid-template-columns: 1.4fr 1fr;
-			align-items: start;
-		}
-
-		.card-grid--three {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-		}
-
-		.info-grid {
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-		}
 	}
 }

@@ -9,6 +9,7 @@
 			var(--lx-color-surface),
 			oklch(from var(--lx-color-surface) clamp(0.12, l - 0.75, 0.2) c h)
 		);
+
 		--bg-secondary: light-dark(
 			oklch(from var(--lx-color-surface) clamp(0.92, l - 0.06, 0.96) c h),
 			oklch(from var(--bg-color) clamp(0.2, l + 0.1, 0.3) c h)
@@ -25,6 +26,7 @@
 					calc(c * 0.35) h
 			)
 		);
+
 		--text-h: light-dark(
 			oklch(
 				from var(--lx-color-surface) clamp(0.08, l - 0.7, 0.28)
@@ -35,6 +37,7 @@
 					calc(c * 0.25) h
 			)
 		);
+
 		--text-s: light-dark(
 			oklch(
 				from var(--lx-color-surface) clamp(0.45, l - 0.42, 0.6)
@@ -57,6 +60,7 @@
 					calc(c * 0.9) h
 			)
 		);
+
 		--border: light-dark(
 			oklch(from var(--lx-color-surface) calc(l - 0.06) calc(c * 1.5) h),
 			oklch(
@@ -64,6 +68,7 @@
 					calc(c * 1.5) h
 			)
 		);
+
 		--divider: light-dark(
 			oklch(from var(--lx-color-surface) calc(l - 0.04) calc(c * 1.2) h),
 			oklch(
@@ -80,6 +85,7 @@
 		background: var(--accent);
 		color: #fff;
 	}
+
 	:where(h1, h2, h3, h4, h5, h6, [id]) {
 		scroll-margin-top: 5rem;
 	}
@@ -90,6 +96,7 @@
 			min-block-size: 6rem;
 		}
 	}
+
 	:where(p, li, dd, blockquote, figcaption) {
 		hyphens: auto;
 	}
@@ -100,8 +107,27 @@
 			env(safe-area-inset-right, 0);
 		padding-bottom: env(safe-area-inset-bottom, 0);
 		color: var(--text);
-		background: var(--bg-color);
-		margin: 0;
+		background:
+  		/* Верхний левый */
+			radial-gradient(
+				circle at top left,
+				color-mix(in oklch, var(--accent) 20%, canvas) 0%,
+				transparent 35%
+			),
+			/* Нижний правый */
+				radial-gradient(
+					circle at bottom right,
+					color-mix(in oklch, var(--lx-color-success) 25%, canvas) 0%,
+					transparent 30%
+				),
+			var(--bg-color);
+
+		/* Увеличиваем фон для анимации */
+		/*background-size: 120% 120%;*/
+		/*background-position: 0% 0%;*/
+
+		/* Анимация "дыхания" */
+		/*animation: wave-breathe 15s infinite ease-in-out;*/
 	}
 
 	h1,
@@ -111,28 +137,24 @@
 		color: var(--text-h);
 		margin: 0;
 	}
+
 	h1 {
 		font-size: clamp(2rem, 5vw + 0.5rem, 3rem);
 		letter-spacing: -0.025em;
 	}
+
 	h2 {
 		font-size: clamp(1.5rem, 3vw + 0.5rem, 2rem);
 		letter-spacing: -0.02em;
 	}
-	p {
-		margin: 0;
-	}
+
 	a {
 		color: var(--accent);
 		text-decoration: none;
 		transition: opacity 0.15s ease;
 	}
+
 	a:hover {
 		opacity: 0.8;
-	}
-	main,
-	.header,
-	.footer {
-		padding: var(--space);
 	}
 }

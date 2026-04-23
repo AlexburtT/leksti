@@ -8,6 +8,7 @@
 	*::before,
 	*::after {
 		box-sizing: border-box;
+		/*text-box: trim-both cap alphabetic;*/
 	}
 
 	/* ─── Margin / Padding ───

@@ -35,6 +35,7 @@
 		<link rel="canonical" href="https://leksti.ru/" />
 		<link rel="icon" href="/public/tv-service.svg" type="image/svg+xml" />
 		<link rel="stylesheet" href="/css/app.css" />
+		<script src="/js/main.js" type="module"></script>
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
@@ -77,6 +78,7 @@
 		<div class="scroll-progress-bar lxt-scroll-progress"></div>
 
 		<header class="header">
+			<div class="conteiner">
 			<div class="brand-row">
 				<a class="brand" href="#top" id="top">
 					<span class="brand__mark" aria-hidden="true">TV</span>
@@ -101,37 +103,19 @@
 				>
 					+7 (962) 293-06-11
 				</a>
-			</div>
+			</div></div>
 		</header>
 
-		<main id="main-content">
-			<section class="hero section">
+		<main>
+			<section class="hero conteiner">
 				<div class="shell hero__grid">
 					<div class="hero__content">
-						<p class="eyebrow">
-							<svg
-								width="16"
-								height="16"
-								viewBox="0 0 24 24"
-								fill="none"
-								aria-hidden="true"
-							>
-								<path
-									d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-									fill="currentColor"
-								/>
-							</svg>
-							Ремонт в сервисном центре
-						</p>
-						<h1>
-							Ремонт телевизоров<br />
-							в Новобурейском
-						</h1>
+						<h1>Ремонт телевизоров в Новобурейском</h1>
 						<p class="hero__lead">
-							Основная услуга: замена подсветки, если звук есть, а
-							изображения нет. Диагностика, ремонт питания,
-							восстановление после скачка напряжения. Приём
-							техники только в мастерской.
+							Замена подсветки, если звук есть, а изображения нет.
+							<br />Диагностика, ремонт питания, восстановление
+							после скачка напряжения. <br />Приём техники только
+							в мастерской.
 						</p>
 
 						<ul class="badge-list" aria-label="Преимущества">
@@ -152,16 +136,19 @@
 							</li>
 							<li class="badge badge--accent">
 								<svg
-									width="14"
-									height="14"
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
 									viewBox="0 0 24 24"
 									fill="none"
-									aria-hidden="true"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="lx-icon"
 								>
-									<path
-										d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"
-										fill="currentColor"
-									/>
+									<path d="M6 11h8a4 4 0 0 0 0-8H9v18" />
+									<path d="M6 15h8" />
 								</svg>
 								Диагностика от 0 ₽ при ремонте
 							</li>
@@ -209,301 +196,37 @@
 								rel="noopener noreferrer"
 							>
 								<svg
-									width="18"
-									height="18"
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
 									viewBox="0 0 24 24"
 									fill="none"
-									aria-hidden="true"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="lx-icon"
 								>
 									<path
-										d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-										fill="currentColor"
+										d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
 									/>
 								</svg>
-								Написать в WhatsApp
+								Написать в Max
 							</a>
-						</div>
-
-						<div class="notice">
-							<strong
-								><svg
-									width="16"
-									height="16"
-									viewBox="0 0 24 24"
-									fill="none"
-									aria-hidden="true"
-								>
-									<path
-										d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-										fill="currentColor"
-									/></svg
-								>Когда пора нести к мастеру?</strong
-							>
-							<ul class="symptom-list">
-								<li>
-									<svg
-										width="14"
-										height="14"
-										viewBox="0 0 24 24"
-										fill="none"
-										aria-hidden="true"
-									>
-										<path
-											d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-											fill="currentColor"
-										/>
-									</svg>
-									Звук есть, экран тёмный
-								</li>
-								<li>
-									<svg
-										width="14"
-										height="14"
-										viewBox="0 0 24 24"
-										fill="none"
-										aria-hidden="true"
-									>
-										<path
-											d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-											fill="currentColor"
-										/>
-									</svg>
-									Изображение появляется и сразу пропадает
-								</li>
-								<li>
-									<svg
-										width="14"
-										height="14"
-										viewBox="0 0 24 24"
-										fill="none"
-										aria-hidden="true"
-									>
-										<path
-											d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-											fill="currentColor"
-										/>
-									</svg>
-									Картинка видна только под фонариком
-								</li>
-								<li>
-									<svg
-										width="14"
-										height="14"
-										viewBox="0 0 24 24"
-										fill="none"
-										aria-hidden="true"
-									>
-										<path
-											d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-											fill="currentColor"
-										/>
-									</svg>
-									Экран мерцает или теряет яркость
-								</li>
-							</ul>
-						</div>
-
-						<div
-							class="hero__cities"
-							aria-label="Населенные пункты"
-						>
-							<span class="city-chip">
-								<svg
-									width="12"
-									height="12"
-									viewBox="0 0 24 24"
-									fill="none"
-									aria-hidden="true"
-								>
-									<path
-										d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-										fill="currentColor"
-									/>
-								</svg>
-								Новобурейский
-							</span>
-							<span class="city-chip">
-								<svg
-									width="12"
-									height="12"
-									viewBox="0 0 24 24"
-									fill="none"
-									aria-hidden="true"
-								>
-									<path
-										d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-										fill="currentColor"
-									/>
-								</svg>
-								Бурея
-							</span>
-							<span class="city-chip">
-								<svg
-									width="12"
-									height="12"
-									viewBox="0 0 24 24"
-									fill="none"
-									aria-hidden="true"
-								>
-									<path
-										d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-										fill="currentColor"
-									/>
-								</svg>
-								Прогресс
-							</span>
-							<span class="city-chip">
-								<svg
-									width="12"
-									height="12"
-									viewBox="0 0 24 24"
-									fill="none"
-									aria-hidden="true"
-								>
-									<path
-										d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-										fill="currentColor"
-									/>
-								</svg>
-								Талакан
-							</span>
-							<span class="city-chip">
-								<svg
-									width="12"
-									height="12"
-									viewBox="0 0 24 24"
-									fill="none"
-									aria-hidden="true"
-								>
-									<path
-										d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-										fill="currentColor"
-									/>
-								</svg>
-								Архара
-							</span>
-						</div>
-					</div>
-
-					<aside class="hero__aside" aria-label="Иллюстрация и факты">
-						<div class="hero-figure">
-							<img
-								src="/public/tv-service.svg"
-								alt=""
-								width="128"
-								height="128"
-								loading="lazy"
-								decoding="async"
-							/>
-							<span class="badge badge--accent hero-figure__badge"
-								>Ремонт</span
-							>
-						</div>
-
-						<div class="card">
-							<h3>Что важно знать до обращения</h3>
-							<ul class="card-list">
-								<li>
-									<svg
-										width="14"
-										height="14"
-										viewBox="0 0 24 24"
-										fill="none"
-										aria-hidden="true"
-									>
-										<path
-											d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-											fill="currentColor"
-										/>
-									</svg>
-									Техника принимается только в мастерской
-								</li>
-								<li>
-									<svg
-										width="14"
-										height="14"
-										viewBox="0 0 24 24"
-										fill="none"
-										aria-hidden="true"
-									>
-										<path
-											d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-											fill="currentColor"
-										/>
-									</svg>
-									Старые телевизоры сначала оцениваются на
-									рентабельность
-								</li>
-								<li>
-									<svg
-										width="14"
-										height="14"
-										viewBox="0 0 24 24"
-										fill="none"
-										aria-hidden="true"
-									>
-										<path
-											d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
-											fill="currentColor"
-										/>
-									</svg>
-									После диагностики согласовываются срок и
-									стоимость
-								</li>
-							</ul>
-						</div>
-					</aside>
-				</div>
+						</div>			
 			</section>
 		</main>
 
-		<footer class="site-footer">
-			<div class="shell footer-row">
-				<p>
-					© <span id="year"></span>
-					<a
-						class="footer-link"
-						href="https://leksti.ru"
-						rel="noopener"
-						>LexTi®</a
-					>
-					— Все права защищены.
-				</p>
+		<footer class="footer conteiner">
+			<div class="footer-row">
+				<p>© <span id="year"></span>
+					<a class="footer-link" href="https://lexti.ru" rel="noopener">LexTi®</a>
+					— Все права защищены.</p>
 				<p>
 					<a class="footer-link" href="/privacy.html"
-						>Политика конфиденциальности</a
-					>
+						>Политика конфиденциальности</a>
 				</p>
 			</div>
 		</footer>
-
-		<div class="mobile-call">
-			<a
-				class="button button--primary button--full"
-				href="tel:+79622930611"
-				rel="noopener noreferrer"
-			>
-				Позвонить: +7 (962) 293-06-11
-			</a>
-		</div>
-
-		<script>
-			const yearNode = document.getElementById("year");
-			yearNode.textContent = new Date().getFullYear();
-
-			document.querySelectorAll('a[href^="#"]').forEach((link) => {
-				link.addEventListener("click", (event) => {
-					const targetId = link.getAttribute("href");
-					if (!targetId || targetId === "#") return;
-					const target = document.querySelector(targetId);
-					if (!target) return;
-					event.preventDefault();
-					target.scrollIntoView({
-						behavior: "smooth",
-						block: "start",
-					});
-				});
-			});
-		</script>
 	</body>
 </html>

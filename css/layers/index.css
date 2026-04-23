@@ -1,6 +1,7 @@
 /* 1. @property — ВСЕГДА первым (вне @layer!) */
 @import "properties.css";
 
+@import "reset.css" layer(reset);
 /* 2. Вычислительный слой (функции + фоллбэки) */
 @import "functions.css" layer(functions);
 
