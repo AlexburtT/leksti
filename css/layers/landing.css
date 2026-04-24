@@ -1,317 +1,263 @@
-/* ==========================================================================
-@layer components — чистый минималистичный дизайн лендинга
-========================================================================== */
-@layer components {
-	/* ─── Body / Global ─── */
+@layer project {
+	/* ==========================================================================
+	   PROJECT-SPECIFIC STYLES
+   Этот файл НЕ переносим — содержит branding, layout и секции конкретного
+   лендинга. При портировании темы в другой проект замените этот файл.
+   ========================================================================== */
 
-	.conteiner {
-		width: min(100%, 75rem);
-		margin: 0 auto;
-		padding: var(--space);
-	}
-
+	/* ─── Body background ─── */
 	body {
-		display: grid;
-		grid-template-rows: auto 1fr auto;
-		min-height: 100dvh;
+		background:
+			/* Верхний левый блик */
+			radial-gradient(
+				circle at top left,
+				color-mix(in oklch, var(--accent) 20%, var(--bg-color)) 0%,
+				transparent 35%
+			),
+			/* Нижний правый блик */
+				radial-gradient(
+					circle at bottom right,
+					color-mix(
+							in oklch,
+							var(--lx-color-success) 25%,
+							var(--bg-color)
+						)
+						0%,
+					transparent 30%
+				),
+			var(--bg-color);
 	}
 
-	/*@keyframes wave-breathe {
-		0%,
-		100% {
-			background-position: 0% 0%;
-		}
-		50% {
-			background-position: 10% 10%;
-		}
-	}*/
-
-	/* ─── Scroll-linked Animations (View Timeline API) ───
-   Поддержка: Chrome 114+, Edge 114+, Safari 16.4+ (iOS 16.4+), Firefox 120+ (но с багами) */
-
-	.scroll-progress-bar {
-		position: fixed;
-		inset-block-start: 0;
-		inset-inline-start: 0;
-		z-index: 999;
-		block-size: 0.25rem;
-		inline-size: 0%;
-		background: linear-gradient(
-			90deg,
-			var(--lx-color-primary),
-			var(--lx-color-success)
-		);
-	}
-
-	.lxt-scroll-progress {
-		transform-origin: left center;
-		animation: lxt-scroll-grow linear;
-		animation-timeline: scroll(root);
-	}
-
-	@keyframes lxt-scroll-grow {
-		from {
-			inline-size: 0%;
-		}
-
-		to {
-			inline-size: 100%;
-		}
-	}
-
-	.lxt-scroll-fade {
-		animation: lxt-scroll-fade linear both;
-		animation-timeline: view();
-		animation-range: entry 0% entry 100%;
-	}
-
-	@keyframes lxt-scroll-fade {
-		from {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		to {
-			opacity: 0;
-			transform: translateY(-2rem);
-		}
-	}
-
-	.lxt-scroll-parallax {
-		animation: lxt-scroll-parallax linear both;
-		animation-timeline: view();
-		animation-range: entry 0% cover 100%;
-	}
-
-	@keyframes lxt-scroll-parallax {
-		from {
-			transform: translateY(0);
-		}
-
-		to {
-			transform: translateY(-3rem);
-		}
-	}
-
-	/* ================================================================
-   HEADER
-   ================================================================ */
+	/* ─── Header ─── */
 	.header {
 		position: sticky;
 		top: 0;
+		padding-block: 1rem;
 		z-index: 40;
-
 		border-bottom: 1px solid var(--divider);
-		box-shadow: var(--f-shadow--card);
+		box-shadow: var(--shadow-card);
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
-
-		.conteiner {
-			display: flex;
-			justify-content: space-between;
-			flex-wrap: wrap;
-			gap: var(--space);
-		}
+		background: color-mix(in oklch, var(--bg-color) 85%, transparent);
+		container-type: inline-size;
 	}
 
-	.brand-row,
-	.header-actions {
+	.header .container {
 		display: flex;
-		align-items: center;
 		justify-content: space-between;
-		gap: 0.75rem;
+		align-items: center;
 		flex-wrap: wrap;
+		gap: var(--space);
+		padding-block: 0.5rem;
 	}
 
+	/* ─── Brand ─── */
 	.brand {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.75rem;
-		color: inherit;
+		color: var(--text-h);
 		text-decoration: none;
 	}
 
 	.brand__mark {
 		display: grid;
 		place-items: center;
-		position: relative;
+		width: 2.4rem;
 		height: 2.4rem;
-		aspect-ratio: 1/1;
 		border-radius: 0.6rem;
 		background: var(--accent);
-		color: var(--text-h);
-		font-size: 0.8rem;
+		color: var(--text-on-primary);
 		font-weight: 800;
-		letter-spacing: 0.05em;
+		font-size: 0.8rem;
+		position: relative;
 	}
 
 	.brand__mark::before,
 	.brand__mark::after {
 		content: "";
 		position: absolute;
-		height: 100%;
-		width: 100%;
+		inset: 0;
 		border-radius: inherit;
 		background: conic-gradient(
 			from var(--deg) at center,
-			#00c3ff,
-			#ffff1c,
-			#ff00c8,
-			#00ff9c
+			var(--lx-color-primary),
+			var(--lx-color-success),
+			var(--lx-color-warning),
+			var(--lx-color-danger)
 		);
-		z-index: -2;
-		padding: 2px;
-		animation: rotate 2s linear infinite;
+		z-index: -1;
 	}
 
 	.brand__mark::after {
-		filter: blur(5px);
+		filter: blur(4px);
+		animation: spin 3s linear infinite;
 	}
 
-	@keyframes rotate {
+	@keyframes spin {
 		to {
 			--deg: 360deg;
 		}
 	}
 
-	.brand__text {
-		display: grid;
-		gap: 0.1rem;
-
-		strong {
-			font-size: 0.9rem;
-			line-height: 1.15;
-			color: var(--text-h);
-		}
-
-		small {
-			font-size: 0.78rem;
-			line-height: 1.2;
-			color: var(--text-s);
-		}
+	.brand__name {
+		display: block;
+		font-size: 0.9rem;
+		line-height: 1.1;
 	}
 
+	.brand__city {
+		display: block;
+		font-size: 0.75rem;
+		color: var(--text-s);
+	}
+
+	/* ─── Phone chip ─── */
 	.header-phone {
-		font-weight: 600;
-		color: var(--accent);
-		text-decoration: none;
-	}
-
-	.header-phone:hover {
-		opacity: 0.8;
-	}
-
-	/* ================================================================
-   BUTTONS
-   ================================================================ */
-	.button {
 		display: inline-flex;
 		align-items: center;
-		justify-content: center;
 		gap: 0.5rem;
-		min-block-size: 2.75rem;
-		padding: 0.7rem 1.25rem;
-		border: 1px solid transparent;
+		padding: 0.5rem 1rem;
 		border-radius: 999px;
-		font-size: 0.9rem;
-		font-weight: 600;
-		line-height: 1;
-		text-decoration: none;
-		cursor: pointer;
-		transition:
-			filter 0.15s ease,
-			transform 0.15s ease,
-			background 0.15s ease,
-			border-color 0.15s ease;
-	}
-
-	.button:hover {
-		filter: brightness(1.05);
-		transform: translateY(-1px);
-	}
-
-	.button:focus-visible,
-	.nav a:focus-visible,
-	.header-phone:focus-visible,
-	.contact-link:focus-visible,
-	.brand:focus-visible,
-	.faq-item summary:focus-visible,
-	.field :where(input, textarea):focus-visible,
-	.checkbox:focus-visible,
-	.submit-status a:focus-visible {
-		outline: 2px solid var(--accent);
-		outline-offset: 2px;
-	}
-
-	.button--primary {
-		background: var(--accent);
-		color: #ffffff;
-	}
-
-	.button--secondary {
-		background: transparent;
-		border-color: var(--border);
+		background: var(--divider);
 		color: var(--text-h);
+		font-weight: 600;
+		text-decoration: none;
+		transition: inherit;
 	}
 
-	.button--secondary:hover {
-		background: var(--bg-secondary);
-		border-color: var(--text-s);
+	.header-phone svg {
+		width: 1.1em;
+		height: 1.1em;
+		flex-shrink: 0;
 	}
 
-	.button--full {
-		inline-size: 100%;
-	}
-
-	/* ================================================================
-   HERO
-   ================================================================ */
-
-	.hero__grid {
-		display: grid;
-		gap: 2.5rem;
-	}
-
-	.hero__content {
-		padding: 0;
-		border: none;
-		border-radius: 0;
-		background: transparent;
-		box-shadow: none;
-	}
-
-	.hero__content::before {
+	.header-phone__text {
 		display: none;
 	}
 
-	h1 {
-		max-width: 17ch;
+	/* Container query: текст телефона появляется по ширине шапки */
+	@container header (min-width: 500px) {
+		.header-phone__text {
+			display: inline;
+		}
+		.header-phone {
+			padding: 0.6rem 1.25rem;
+		}
 	}
 
-	h1 br {
-		display: block;
+	.header-phone:hover {
+		background: var(--state-hover-bg);
 	}
 
-	h2 {
-		margin: 0 0 0.5rem;
-		font-size: clamp(1.45rem, 4vw, 2.1rem);
-		line-height: 1.1;
-		letter-spacing: -0.025em;
-		color: var(--text-h);
+	.header-phone:active {
+		background: var(--state-active-bg);
+		transform: scale(0.98);
 	}
 
-	h3 {
-		margin: 0 0 0.5rem;
-		font-size: 1.05rem;
-		line-height: 1.3;
-		color: var(--text-h);
+	.header-phone:focus-visible {
+		outline: none;
+		box-shadow: var(--state-focus-ring);
+		transform: none;
 	}
 
-	.hero__lead {
-		max-width: 38rem;
-		font-size: clamp(1rem, 0.5vw + 0.85rem, 1.1rem);
-		line-height: 1.65;
+	/* ─── Hero ─── */
+	.hero {
+		text-align: center;
+		padding-block: clamp(2rem, 5vw, 4rem);
+	}
+
+	.hero p {
+		max-width: 50ch;
+		margin: 0 auto 2rem;
 		color: var(--text-s);
-		margin: 0 0 1.5rem;
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	/* ─── Hero entry animation (@starting-style) ─── */
+	@starting-style {
+		.hero h1 {
+			opacity: 0;
+			transform: translateY(1rem);
+		}
+		.hero p {
+			opacity: 0;
+			transform: translateY(0.5rem);
+		}
+		.hero-actions {
+			opacity: 0;
+			transform: translateY(0.5rem);
+		}
+	}
+
+	.hero h1 {
+		opacity: 1;
+		transform: translateY(0);
+		transition:
+			opacity 0.6s ease 0.1s,
+			transform 0.6s ease 0.1s;
+	}
+
+	.hero p {
+		opacity: 1;
+		transform: translateY(0);
+		transition:
+			opacity 0.6s ease 0.25s,
+			transform 0.6s ease 0.25s;
+	}
+
+	.hero-actions {
+		opacity: 1;
+		transform: translateY(0);
+		transition:
+			opacity 0.5s ease,
+			transform 0.5s ease;
+	}
+
+	.hero-actions .btn:nth-child(1) {
+		transition-delay: 0.4s;
+	}
+
+	.hero-actions .btn:nth-child(2) {
+		transition-delay: 0.5s;
+	}
+
+	/* ─── Features grid ─── */
+	.features {
+		display: grid;
+		gap: 1rem;
+		margin-block: 2rem;
+	}
+
+	@media (min-width: 600px) {
+		.features {
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		}
+	}
+
+	.features .card h3 {
+		font-size: 1.1rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.features .card p {
+		margin: 0;
+		color: var(--text-s);
+		font-size: 0.95rem;
+	}
+
+	/* Staggered view animation on cards */
+	.features .card:nth-child(2) {
+		animation-delay: 150ms;
+	}
+
+	.features .card:nth-child(3) {
+		animation-delay: 300ms;
 	}
 }

@@ -34,8 +34,8 @@
 		/>
 		<link rel="canonical" href="https://leksti.ru/" />
 		<link rel="icon" href="/public/tv-service.svg" type="image/svg+xml" />
-		<link rel="stylesheet" href="/css/app.css" />
-		<script src="/js/main.js" type="module"></script>
+		<link rel="stylesheet" href="/css/layers/index.css" />
+		<!--<script src="/js/main.js" type="module"></script>-->
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
@@ -75,158 +75,137 @@
 		</script>
 	</head>
 	<body>
-		<div class="scroll-progress-bar lxt-scroll-progress"></div>
+		<div class="scroll-progress-bar" role="presentation"></div>
 
 		<header class="header">
-			<div class="conteiner">
-			<div class="brand-row">
-				<a class="brand" href="#top" id="top">
-					<span class="brand__mark" aria-hidden="true">TV</span>
+			<div class="container">
+				<a href="#top" class="brand" aria-label="На главную">
+					<span class="brand__mark">TV</span>
 					<span class="brand__text">
-						<strong>Ремонт телевизоров</strong>
-						<small>Новобурейский</small>
+						<strong class="brand__name">Ремонт телевизоров</strong>
+						<span class="brand__city">Новобурейский</span>
 					</span>
 				</a>
+				<nav class="header-actions" aria-label="Основная навигация">
+					<a
+						href="tel:+79622930611"
+						class="header-phone"
+						aria-label="Позвонить: +7 (962) 293-06-11"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<path
+								d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"
+							/>
+						</svg>
+						<span class="header-phone__text"
+							>+7 (962) 293-06-11</span
+						>
+					</a>
+				</nav>
 			</div>
-			<!--
-			<nav class="nav" aria-label="Основная навигация">
-				<a href="#services">Услуги</a>
-				<a href="#faq">FAQ</a>
-				<a href="#contacts">Контакты</a>
-			</nav>-->
-
-			<div class="header-actions">
-				<a
-					class="header-phone"
-					href="tel:+79622930611"
-					rel="noopener noreferrer"
-				>
-					+7 (962) 293-06-11
-				</a>
-			</div></div>
 		</header>
 
-		<main>
-			<section class="hero conteiner">
-				<div class="shell hero__grid">
-					<div class="hero__content">
-						<h1>Ремонт телевизоров в Новобурейском</h1>
-						<p class="hero__lead">
-							Замена подсветки, если звук есть, а изображения нет.
-							<br />Диагностика, ремонт питания, восстановление
-							после скачка напряжения. <br />Приём техники только
-							в мастерской.
-						</p>
+		<main class="container">
+			<section class="hero" id="top">
+				<h1>Ремонт телевизоров в Новобурейском</h1>
+				<p>
+					Замена подсветки, если звук есть, а изображения нет.
+					Диагностика, ремонт питания, восстановление после скачка
+					напряжения. Приём техники только в мастерской.
+				</p>
+				<div class="hero-actions">
+					<a href="tel:+79622930611" class="btn btn--primary">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<path
+								d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+							/>
+						</svg>
+						Позвонить
+					</a>
+					<a
+						href="https://max.ru/u/f9LHodD0cOIitgAFekIQQTiEl4Lt_YHGVI-KNcjWqo6pU9kmEmooyfUaONk"
+						class="btn btn--secondary"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<path
+								d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+							/>
+						</svg>
+						Написать в Max
+					</a>
+				</div>
+			</section>
 
-						<ul class="badge-list" aria-label="Преимущества">
-							<li class="badge badge--success">
-								<svg
-									width="14"
-									height="14"
-									viewBox="0 0 24 24"
-									fill="none"
-									aria-hidden="true"
-								>
-									<path
-										d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-										fill="currentColor"
-									/>
-								</svg>
-								Гарантия 6-12 мес.
-							</li>
-							<li class="badge badge--accent">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="24"
-									height="24"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									class="lx-icon"
-								>
-									<path d="M6 11h8a4 4 0 0 0 0-8H9v18" />
-									<path d="M6 15h8" />
-								</svg>
-								Диагностика от 0 ₽ при ремонте
-							</li>
-							<li class="badge badge--warning">
-								<svg
-									width="14"
-									height="14"
-									viewBox="0 0 24 24"
-									fill="none"
-									aria-hidden="true"
-								>
-									<path
-										d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V7h-2v4H7v2h2v4h2v-4h2v-2z"
-										fill="currentColor"
-									/>
-								</svg>
-								Ремонт в сервисном центре
-							</li>
-						</ul>
-
-						<div class="hero__actions">
-							<a
-								class="button button--primary"
-								href="tel:+79622930611"
-								rel="noopener noreferrer"
-							>
-								<svg
-									width="18"
-									height="18"
-									viewBox="0 0 24 24"
-									fill="none"
-									aria-hidden="true"
-								>
-									<path
-										d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
-										fill="currentColor"
-									/>
-								</svg>
-								Позвонить
-							</a>
-							<a
-								class="button button--secondary"
-								href="https://max.ru/u/f9LHodD0cOIitgAFekIQQTiEl4Lt_YHGVI-KNcjWqo6pU9kmEmooyfUaONk"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="24"
-									height="24"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									class="lx-icon"
-								>
-									<path
-										d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"
-									/>
-								</svg>
-								Написать в Max
-							</a>
-						</div>			
+			<section class="features">
+				<h2 class="sr-only">Наши преимущества</h2>
+				<article class="card fade-in">
+					<h3>Гарантия 6–12 мес.</h3>
+					<p>
+						Официальная гарантия на все виды работ и установленные
+						запчасти.
+					</p>
+				</article>
+				<article class="card fade-in">
+					<h3>Диагностика от 0 ₽</h3>
+					<p>
+						Бесплатная диагностика при последующем ремонте в нашем
+						сервисе.
+					</p>
+				</article>
+				<article class="card fade-in">
+					<h3>Ремонт в сервисном центре</h3>
+					<p>
+						Современное оборудование и профессиональные условия для
+						точного ремонта.
+					</p>
+				</article>
 			</section>
 		</main>
 
-		<footer class="footer conteiner">
-			<div class="footer-row">
-				<p>© <span id="year"></span>
-					<a class="footer-link" href="https://lexti.ru" rel="noopener">LexTi®</a>
-					— Все права защищены.</p>
-				<p>
-					<a class="footer-link" href="/privacy.html"
-						>Политика конфиденциальности</a>
-				</p>
-			</div>
+		<footer class="footer">
+			<p>
+				&copy; <time datetime="2026">2026</time>
+				<a href="https://lexti.ru" target="_blank" rel="noopener"
+					>LexTi&reg;</a
+				>
+				&mdash; Все права защищены.
+			</p>
+			<p><a href="/privacy.html">Политика конфиденциальности</a></p>
 		</footer>
 	</body>
 </html>

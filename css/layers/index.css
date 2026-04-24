@@ -1,18 +1,16 @@
 /* 1. @property — ВСЕГДА первым (вне @layer!) */
 @import "properties.css";
 
+/* 2. Cascade layers (переносимые между проектами) */
 @import "reset.css" layer(reset);
-/* 2. Вычислительный слой (функции + фоллбэки) */
-@import "functions.css" layer(functions);
-
-/* 3. Базовая тема и сброс */
 @import "base.css" layer(base);
 @import "a11y.css" layer(a11y);
+@import "components.css" layer(components);
 
-/* 4. Компоненты UI */
-@import "landing.css" layer(components);
+/* 3. Project-specific styles (заменить при портировании) */
+@import "landing.css" layer(project);
 
 /* ==========================================================================
-   5. CASCADE ORDER (специфичность при равных селекторах)
+   4. CASCADE ORDER (специфичность при равных селекторах)
    ========================================================================== */
-@layer reset, functions, base, a11y, components;
+@layer reset, base, a11y, components, project;

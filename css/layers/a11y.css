@@ -1,22 +1,20 @@
 @layer a11y {
 	@media (prefers-reduced-transparency: reduce) {
 		:root {
-			--f-alpha--header: var(--bg-color);
-			--f-alpha--mobile: var(--bg-color);
-			--f-shadow--card: none;
-			--f-shadow--glow: none;
+			--shadow-card: none;
+			--glow-primary: none;
 		}
-		.site-header,
-		.mobile-call {
+		.header {
 			backdrop-filter: none;
 			-webkit-backdrop-filter: none;
+			background: var(--bg-color);
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		:root {
-			--f-shadow--card: none;
-			--f-shadow--glow: none;
+			--shadow-card: none;
+			--glow-primary: none;
 		}
 		html {
 			scroll-behavior: auto;
@@ -28,11 +26,14 @@
 			animation-iteration-count: 1 !important;
 			transition-duration: 0.01ms !important;
 		}
+		.scroll-progress-bar {
+			display: none;
+		}
 	}
 
-	@media (prefers-reduced-motion: no-preference) {
-		html {
-			scroll-behavior: smooth;
+	@media (prefers-reduced-data: reduce) {
+		.scroll-progress-bar {
+			display: none;
 		}
 	}
 
@@ -48,13 +49,21 @@
 					from var(--lx-color-primary) clamp(0.75, l + 0.25, 0.85) c h
 				)
 			);
+			--state-focus-ring: 0 0 0 3px light-dark(#000, #fff);
 		}
 		.card,
-		.faq-item,
-		.contact-panel,
-		.form-panel,
-		.map-card {
+		.header {
 			border-width: 2px;
+		}
+	}
+
+	@media (forced-colors: active) {
+		.btn {
+			border: 2px solid ButtonText;
+		}
+		.btn--primary {
+			background: Highlight;
+			color: HighlightText;
 		}
 	}
 }

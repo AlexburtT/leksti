@@ -1,14 +1,63 @@
-/* @property остаются без изменений — они стабильны с 2022 */
+/* ==========================================================================
+   DESIGN TOKENS — @property регистрации
+   ───────────────────────────────────────────────────────────────────────────
+   Всегда ВНЕ @layer! Зарегистрированные свойства:
+   • типизируются (браузер знает, что это <color>, <percentage>, <angle>)
+   • анимируются (транзиции и @keyframes по отдельным каналам)
+   • позволяют calc() на каналах oklch напрямую
+
+   Для смены темы между проектами достаточно переопределить 6 канальных
+   переменных (--lx-surface-l/c/h, --lx-primary-l/c/h).
+   Все производные токены в base.css пересчитаются автоматически.
+   ========================================================================== */
+
+/* ─── Surface: базовый цвет поверхности ─── */
+@property --lx-surface-l {
+	syntax: "<percentage>";
+	inherits: true;
+	initial-value: 99.5%;
+}
+@property --lx-surface-c {
+	syntax: "<number>";
+	inherits: true;
+	initial-value: 0.002;
+}
+@property --lx-surface-h {
+	syntax: "<angle>";
+	inherits: true;
+	initial-value: 240deg;
+}
+
+/* ─── Primary: основной акцент ─── */
+@property --lx-primary-l {
+	syntax: "<percentage>";
+	inherits: true;
+	initial-value: 52%;
+}
+@property --lx-primary-c {
+	syntax: "<number>";
+	inherits: true;
+	initial-value: 0.22;
+}
+@property --lx-primary-h {
+	syntax: "<angle>";
+	inherits: true;
+	initial-value: 225deg;
+}
+
+/* ─── Composed: собираются из каналов L/C/H ─── */
 @property --lx-color-surface {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: oklch(0.995 0.002 240);
+	initial-value: oklch(99.5% 0.002 240);
 }
 @property --lx-color-primary {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: oklch(0.52 0.22 225);
+	initial-value: oklch(52% 0.22 225);
 }
+
+/* ─── Status: семантические цвета ─── */
 @property --lx-color-danger {
 	syntax: "<color>";
 	inherits: true;
@@ -25,21 +74,9 @@
 	initial-value: oklch(95% 0.2 105);
 }
 
+/* ─── Animated angle (для conic-gradient) ─── */
 @property --deg {
 	syntax: "<angle>";
 	inherits: true;
 	initial-value: 0deg;
-}
-/* ─── CSS Custom Functions (раскомментируй, когда браузеры догонят) ─── */
-/*
-@function --alpha(--color <color>, --opacity <number>: 0.5) returns <color> {
-  result: oklch(from var(--color) l c h / var(--opacity));
-}
-*/
-
-/* ─── Fallback через @property (работает везде) ─── */
-:root {
-	--alpha: oklch(from var(--lx-color-surface) l c h / 0.5);
-	--lighten: oklch(from var(--lx-color-surface) clamp(0, l + 0.15, 1) c h);
-	--darken: oklch(from var(--lx-color-surface) clamp(0, l - 0.15, 1) c h);
 }
