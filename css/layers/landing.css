@@ -32,7 +32,7 @@
 	.header {
 		position: sticky;
 		top: 0;
-		padding-block: 1rem;
+		padding-block: 0.3rem;
 		z-index: 40;
 		border-bottom: 1px solid var(--divider);
 		box-shadow: var(--shadow-card);
@@ -48,7 +48,6 @@
 		align-items: center;
 		flex-wrap: wrap;
 		gap: var(--space);
-		padding-block: 0.5rem;
 	}
 
 	/* ─── Brand ─── */
@@ -156,8 +155,6 @@
 	}
 
 	.header-phone:focus-visible {
-		outline: none;
-		box-shadow: var(--state-focus-ring);
 		transform: none;
 	}
 

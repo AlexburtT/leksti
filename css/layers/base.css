@@ -176,7 +176,6 @@
 		min-height: 100dvh;
 		font: clamp(1rem, 0.4vw + 0.9rem, 1.0625rem) / 160% var(--sans);
 		color: var(--text);
-		overflow-wrap: break-word;
 		padding-inline: env(safe-area-inset-left, 0)
 			env(safe-area-inset-right, 0);
 		padding-bottom: env(safe-area-inset-bottom, 0);
