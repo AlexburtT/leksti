@@ -25,6 +25,11 @@
 	initial-value: oklch(95% 0.2 105);
 }
 
+@property --deg {
+	syntax: "<angle>";
+	inherits: true;
+	initial-value: 0deg;
+}
 /* ─── CSS Custom Functions (раскомментируй, когда браузеры догонят) ─── */
 /*
 @function --alpha(--color <color>, --opacity <number>: 0.5) returns <color> {
